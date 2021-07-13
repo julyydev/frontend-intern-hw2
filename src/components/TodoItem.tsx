@@ -1,7 +1,8 @@
-import React from 'react'
-import {Checkbox} from 'semantic-ui-react'
+import React, {useCallback} from 'react'
+import {Button, Checkbox} from 'semantic-ui-react'
 import styled from '@emotion/styled'
-import {Todo} from '../features'
+import {actions, Todo} from '../features'
+import {useDispatch} from 'react-redux'
 
 interface Props {
   item: Todo
@@ -9,6 +10,11 @@ interface Props {
 
 const TodoItem: React.FC<Props> = (Props) => {
   const {item} = Props
+  const dispatch = useDispatch()
+
+  const handleButtonClick = useCallback((item: Todo) => {
+    dispatch(actions.deleteTodo(item))
+  }, [dispatch])
 
   return (
     <MainContainer>
@@ -17,7 +23,7 @@ const TodoItem: React.FC<Props> = (Props) => {
         {item.content}
       </TextContainer>
       <ButtonContainer>
-        <button>삭제</button>
+        <Button onClick={handleButtonClick.bind({}, item)}>삭제</Button>
       </ButtonContainer>
     </MainContainer>
   )
