@@ -16,9 +16,16 @@ const TodoItem: React.FC<Props> = (Props) => {
     dispatch(actions.deleteTodo(item))
   }, [dispatch])
 
+  const handleCheckboxClick = useCallback((item: Todo) => {
+    dispatch(actions.toggleTodo(item))
+  }, [dispatch])
+
   return (
     <MainContainer>
-      <Checkbox/>
+      <Checkbox
+        checked={item.check}
+        onClick={handleCheckboxClick.bind({}, item)}
+      />
       <TextContainer>
         {item.content}
       </TextContainer>
