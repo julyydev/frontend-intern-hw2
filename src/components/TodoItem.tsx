@@ -11,7 +11,7 @@ const TodoItem: React.FC<Props> = (Props) => {
 
   return (
     <MainContainer>
-      <Checkbox></Checkbox>
+      <Checkbox/>
       <text style={{width: 135, height: 10}}>{text}</text>
       <ButtonContainer>
         <button>삭제</button>
