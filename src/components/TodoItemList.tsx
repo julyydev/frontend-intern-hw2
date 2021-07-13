@@ -9,7 +9,7 @@ const TodoItemList = () => {
 
   return (
     <MainContainer>
-      <RestContainer>끝내지 못한 일의 개수: {todoList.filter((item: Todo) => item.check === false).length}개</RestContainer>
+      <RestContainer>끝내지 못한 일의 개수: {todoList.filter((item: Todo) => !item.check).length}개</RestContainer>
       {todoList.map((item: Todo) => (
         <TodoItem item={item}/>
       ))}
@@ -20,7 +20,7 @@ const TodoItemList = () => {
 export default TodoItemList
 
 const MainContainer = styled.div ({
-  justifyContent: 'center'
+  justifyContent: 'center',
 })
 
 const RestContainer = styled.div ({

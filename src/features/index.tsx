@@ -11,6 +11,7 @@ export interface Todo {
   id: number,
   content: string,
   check: boolean,
+  memo: string,
 }
 
 interface TodoList {
@@ -35,6 +36,7 @@ const todoSlice = createSlice({
         id: index++,
         content: content,
         check: false,
+        memo: ''
       }
       todoAdapter.addOne(state.list, newTodo)
     },
@@ -49,14 +51,23 @@ const todoSlice = createSlice({
         },
       })
     },
+    memo(state, {payload: {id, memo}}) {
+      todoAdapter.updateOne(state.list, {
+        id,
+        changes: {
+          memo: memo,
+        },
+      })
+    },
   },
 })
 
 const addTodo = createAction<object>('todoItem/add')
 const deleteTodo = createAction<object>('todoItem/delete')
 const toggleTodo = createAction<object>('todoItem/toggle')
+const memoTodo = createAction<object>('todoItem/memo')
 
-export const actions = {addTodo, deleteTodo, toggleTodo}
+export const actions = {addTodo, deleteTodo, toggleTodo, memoTodo}
 
 export const rootReducer = combineReducers({
   todos: todoSlice.reducer,
