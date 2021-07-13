@@ -1,31 +1,59 @@
-import {combineReducers, createSlice, createEntityAdapter, EntityState} from '@reduxjs/toolkit'
+import {
+  combineReducers,
+  createSlice,
+  createEntityAdapter,
+  EntityState,
+  createAction,
+  createSelector,
+} from '@reduxjs/toolkit'
 
-export interface TodoItem {
+export interface Todo {
   id: number,
   content: string,
   check: boolean,
 }
 
-interface TodoItemList {
-  list: EntityState<TodoItem>,
+interface TodoList {
+  list: EntityState<Todo>,
 }
 
-const todoAdapter = createEntityAdapter<TodoItem>({
+const todoAdapter = createEntityAdapter<Todo>({
   selectId: (item) => item.id,
 })
 
-const initialState: TodoItemList = {
+const initialState: TodoList = {
   list: todoAdapter.getInitialState(),
 }
 
+let index = 1
 const todoSlice = createSlice({
-  name: 'TodoItem',
+  name: 'todoItem',
   initialState,
   reducers: {
-
-  }
+    add(state, {payload: {content}}) {
+      const newTodo = {
+        id: index++,
+        content: content,
+        check: false,
+      }
+      todoAdapter.addOne(state.list, newTodo)
+    },
+  },
 })
+
+const addTodo = createAction<object>('todoItem/add')
+
+export const actions = {addTodo}
 
 export const rootReducer = combineReducers({
-  todos: todoSlice.reducer
+  todos: todoSlice.reducer,
 })
+
+const {selectAll} = todoAdapter.getSelectors()
+
+export const selectTodoList = createSelector(
+  (state: TodoList) => state.list,
+  (list: EntityState<Todo>) => selectAll(list),
+)
+
+export type RootState = ReturnType<typeof rootReducer>

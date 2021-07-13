@@ -1,14 +1,18 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 import styled from '@emotion/styled'
+import {useSelector} from 'react-redux'
+import {RootState, selectTodoList, Todo} from '../features'
 
 const TodoItemList = () => {
+  const todoList = useSelector<RootState, Todo[]>(state => selectTodoList(state.todos))
+
   return (
     <MainContainer>
       <RestContainer>끝내지 못한 일의 개수: 개</RestContainer>
-      <TodoItem text={'할 일 1'}/>
-      <TodoItem text={'할 일 2'}/>
-      <TodoItem text={'할 일 3'}/>
+      {todoList.map((item: Todo) => (
+        <TodoItem item={item}/>
+      ))}
     </MainContainer>
   )
 }

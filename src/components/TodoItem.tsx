@@ -1,18 +1,21 @@
 import React from 'react'
 import {Checkbox} from 'semantic-ui-react'
 import styled from '@emotion/styled'
+import {Todo} from '../features'
 
 interface Props {
-  text: string
+  item: Todo
 }
 
 const TodoItem: React.FC<Props> = (Props) => {
-  const {text} = Props
+  const {item} = Props
 
   return (
     <MainContainer>
       <Checkbox/>
-      <text style={{width: 135, height: 10}}>{text}</text>
+      <TextContainer>
+        {item.content}
+      </TextContainer>
       <ButtonContainer>
         <button>삭제</button>
       </ButtonContainer>
@@ -29,5 +32,10 @@ const MainContainer = styled.div ({
 
 const ButtonContainer = styled.div ({
   width: 40,
-  height: 20
+  height: 20,
+})
+
+const TextContainer = styled.text ({
+  width: 135,
+  height: 10,
 })
