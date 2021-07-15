@@ -26,4 +26,5 @@ const MainContainer = styled.div ({
 const RestContainer = styled.div ({
   display: 'flex',
   justifyContent: 'center',
+  marginBottom: 5,
 })

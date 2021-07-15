@@ -37,13 +37,21 @@ const TodoInput = () => {
   return (
     <MainContainer>
       <Input
+        style={{width: 170, height: 20}}
+        size='mini'
         type='text'
         value={input}
         placeholder='할 일을 입력하세요.'
         onChange={handleInputChange}
         onKeyDown={handleEnterKeyDown}
       />
-      <Button onClick={handleButtonClick}>추가</Button>
+      <Button
+        size='mini'
+        style={{width: 55, height: 20, marginLeft: 5}}
+        onClick={handleButtonClick}
+      >
+        추가
+      </Button>
     </MainContainer>
   )
 }

@@ -36,6 +36,7 @@ const TodoItem: React.FC<Props> = (Props) => {
   return (
     <MainContainer>
       <Checkbox
+        style={{width: 20}}
         checked={item.check}
         onClick={handleCheckboxClick.bind({}, item)}
       />
@@ -44,9 +45,13 @@ const TodoItem: React.FC<Props> = (Props) => {
       >
         {item.content}
       </TextContainer>
-      <ButtonContainer>
-        <Button onClick={handleButtonClick.bind({}, item)}>삭제</Button>
-      </ButtonContainer>
+      <Button
+        size='mini'
+        style={{width: 55, height: 20, fontsize: 10}}
+        onClick={handleButtonClick.bind({}, item)}
+      >
+        삭제
+      </Button>
       <Modal
         open={isModalOpen}
         size={'mini'}
@@ -73,14 +78,10 @@ const MainContainer = styled.div({
   justifyContent: 'center',
 })
 
-const ButtonContainer = styled.div({
-  width: 40,
-  height: 20,
-})
-
 const TextContainer = styled.div({
-  width: 135,
-  height: 10,
+  marginLeft: 8,
+  marginBottom: 5,
+  width: 147,
 })
 
 const ModalContainer = styled.textarea({
