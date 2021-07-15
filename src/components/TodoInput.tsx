@@ -12,18 +12,27 @@ const TodoInput = () => {
     setInput(event.target.value)
   }
 
-  const handleButtonClick = useCallback(() => {
+  const addContent = useCallback(() => {
     if (!input.trim()) {
       alert('할 일을 입력하지 않았습니다!')
       return
-    }
-    else {
+    } else {
       dispatch(actions.addTodo({
         content: input,
       }))
       setInput('')
     }
   }, [dispatch, input])
+
+  const handleButtonClick = useCallback(() => {
+    addContent()
+  }, [addContent])
+
+  const handleEnterKeyDown = useCallback((event) => {
+    if (event.keyCode === 13) {
+      addContent()
+    }
+  }, [addContent])
 
   return (
     <MainContainer>
@@ -32,6 +41,7 @@ const TodoInput = () => {
         value={input}
         placeholder='할 일을 입력하세요.'
         onChange={handleInputChange}
+        onKeyDown={handleEnterKeyDown}
       />
       <Button onClick={handleButtonClick}>추가</Button>
     </MainContainer>
@@ -40,7 +50,7 @@ const TodoInput = () => {
 
 export default TodoInput
 
-const MainContainer = styled.div ({
+const MainContainer = styled.div({
   display: 'flex',
-  justifyContent: 'center'
+  justifyContent: 'center',
 })
