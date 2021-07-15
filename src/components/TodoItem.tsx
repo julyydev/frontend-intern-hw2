@@ -54,6 +54,8 @@ const TodoItem: React.FC<Props> = (Props) => {
       </Button>
       <Modal
         open={isModalOpen}
+        closeOnDimmerClick={true}
+        onClose={() => setIsModalOpen(false)}
         size={'mini'}
       >
         <div style={{display: 'flex', justifyContent: 'space-between'}}>
