@@ -59,6 +59,14 @@ const todoSlice = createSlice({
         },
       })
     },
+    changeContent(state, {payload: {id, content}}) {
+      todoAdapter.updateOne(state.list, {
+        id,
+        changes: {
+          content: content,
+        },
+      })
+    },
   },
 })
 
@@ -66,8 +74,9 @@ const addTodo = createAction<object>('todoItem/add')
 const deleteTodo = createAction<object>('todoItem/delete')
 const toggleTodo = createAction<object>('todoItem/toggle')
 const memoTodo = createAction<object>('todoItem/memo')
+const changeContentTodo = createAction<object>('todoItem/changeContent')
 
-export const actions = {addTodo, deleteTodo, toggleTodo, memoTodo}
+export const actions = {addTodo, deleteTodo, toggleTodo, memoTodo, changeContentTodo}
 
 export const rootReducer = combineReducers({
   todos: todoSlice.reducer,

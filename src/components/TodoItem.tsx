@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react'
-import {Button, Checkbox, Modal, Grid, TextArea, Header} from 'semantic-ui-react'
+import {Button, Checkbox, Modal, Grid, TextArea} from 'semantic-ui-react'
 import styled from '@emotion/styled'
 import {actions, Todo} from '../features'
 import {useDispatch} from 'react-redux'
@@ -42,6 +42,22 @@ const TodoItem: React.FC<Props> = (Props) => {
     dispatch(actions.memoTodo(newTodo))
   }, [dispatch])
 
+  const handleContentChange = useCallback((newContent: string, item: Todo) => {
+    const newTodo = {
+      id: item.id,
+      content: newContent,
+      check: item.check,
+      memo: item.memo,
+    }
+    dispatch(actions.changeContentTodo(newTodo))
+  }, [dispatch])
+
+  const handleEnterKeyDown = useCallback((event) => {
+    if (event.keyCode === 13) {
+      setIsModalOpen(false)
+    }
+  }, [setIsModalOpen])
+
   return (
     <MainContainer>
       <Checkbox
@@ -68,13 +84,27 @@ const TodoItem: React.FC<Props> = (Props) => {
         size={isModalLarge ? 'fullscreen' : 'mini'}
       >
         <Grid.Column
-          style={{display: 'flex', justifyContent: 'space-between', marginBottom: -10, backgroundColor: '#f9f2f4'}}
+          style={{display: 'flex', justifyContent: 'space-between', marginBottom: 0, backgroundColor: '#f9f2f4'}}
         >
-          <Header
-            style={{marginLeft: 5, marginTop: 3,}}
+          <TextArea
+            style={{
+              display: 'flex',
+              width: '90%',
+              height: 25,
+              resize: 'none',
+              backgroundColor: '#f9f2f4',
+              border: 'none',
+              fontWeight: 'bold',
+              outlineStyle: 'none',
+            }}
+            value={item.content}
+            onChange={(event) => {
+              handleContentChange(event.target.value, item)
+            }}
+            onKeyDown={handleEnterKeyDown}
           >
-            {item.content}
-          </Header>
+          </TextArea>
+
           <Modal.Actions>
             <StyledButton
               style={{backgroundColor: '#fa504d'}}
@@ -95,6 +125,7 @@ const TodoItem: React.FC<Props> = (Props) => {
                 width: '100%',
                 height: modalHeight(),
                 resize: 'none',
+                outlineStyle: 'none',
               }}
               value={item.memo}
               onChange={(event) => {
