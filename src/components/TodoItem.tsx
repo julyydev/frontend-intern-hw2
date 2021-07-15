@@ -46,19 +46,25 @@ const TodoItem: React.FC<Props> = (Props) => {
       <ButtonContainer>
         <Button onClick={handleButtonClick.bind({}, item)}>삭제</Button>
       </ButtonContainer>
-      <Modal
-        open={isModalOpen}
-      >
-        <ModalCenter>
+      <ModalCenter>
+        <Modal
+          open={isModalOpen}
+          closeIcon
+          size={'mini'}
+          style={{borderWidth: 2, borderStyle: 'groove', left: 600}}
+        >
+          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+            <Modal.Header>{item.content}</Modal.Header>
+            <StyledButton onClick={() => setIsModalOpen(false)}>X</StyledButton>
+          </div>
           <ModalContainer
             value={item.memo}
             onChange={(event) => {
               handleMemoChange(event.target.value, item)
             }}
           />
-          <Button onClick={() => setIsModalOpen(false)}>X</Button>
-        </ModalCenter>
-      </Modal>
+        </Modal>
+      </ModalCenter>
     </MainContainer>
   )
 }
@@ -89,4 +95,10 @@ const ModalContainer = styled.textarea({
 
 const ModalCenter = styled.div({
   justifyContent: 'center',
+})
+
+const StyledButton = styled.button ({
+  border: 'none',
+  borderRadius: 35,
+  backgroundColor: '#e9665b',
 })
