@@ -68,20 +68,20 @@ const TodoItem: React.FC<Props> = (Props) => {
         size={isModalLarge ? 'fullscreen' : 'mini'}
       >
         <Grid.Column
-          style={{display: 'flex', justifyContent: 'space-between', marginBottom: -10}}
+          style={{display: 'flex', justifyContent: 'space-between', marginBottom: -10, backgroundColor: '#f9f2f4'}}
         >
           <Header
-            style={{marginLeft: 5}}
+            style={{marginLeft: 5, marginTop: 3,}}
           >
             {item.content}
           </Header>
           <Modal.Actions>
             <StyledButton
-              style={{backgroundColor: '#e9665b'}}
+              style={{backgroundColor: '#fa504d'}}
               onClick={() => setIsModalOpen(false)}
             />
             <StyledButton
-              style={{backgroundColor: '#5fc252'}}
+              style={{backgroundColor: '#29bc41'}}
               onClick={() => setIsModalLarge(prev => !prev)}
             />
           </Modal.Actions>
