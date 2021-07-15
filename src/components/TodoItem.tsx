@@ -3,6 +3,7 @@ import {Button, Checkbox, Modal} from 'semantic-ui-react'
 import styled from '@emotion/styled'
 import {actions, Todo} from '../features'
 import {useDispatch} from 'react-redux'
+import 'semantic-ui-css/semantic.min.css'
 
 interface Props {
   item: Todo
@@ -46,25 +47,21 @@ const TodoItem: React.FC<Props> = (Props) => {
       <ButtonContainer>
         <Button onClick={handleButtonClick.bind({}, item)}>삭제</Button>
       </ButtonContainer>
-      <ModalCenter>
-        <Modal
-          open={isModalOpen}
-          closeIcon
-          size={'mini'}
-          style={{borderWidth: 2, borderStyle: 'groove', left: 600}}
-        >
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <Modal.Header>{item.content}</Modal.Header>
-            <StyledButton onClick={() => setIsModalOpen(false)}>X</StyledButton>
-          </div>
-          <ModalContainer
-            value={item.memo}
-            onChange={(event) => {
-              handleMemoChange(event.target.value, item)
-            }}
-          />
-        </Modal>
-      </ModalCenter>
+      <Modal
+        open={isModalOpen}
+        size={'mini'}
+      >
+        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <Modal.Header>{item.content}</Modal.Header>
+          <StyledButton onClick={() => setIsModalOpen(false)}>X</StyledButton>
+        </div>
+        <ModalContainer
+          value={item.memo}
+          onChange={(event) => {
+            handleMemoChange(event.target.value, item)
+          }}
+        />
+      </Modal>
     </MainContainer>
   )
 }
@@ -87,17 +84,14 @@ const TextContainer = styled.div({
 })
 
 const ModalContainer = styled.textarea({
-  display: 'flex',
-  justifyContent: 'center',
-  width: 300,
+  marginLeft: 5,
+  marginRight: 5,
+  width: 350,
   height: 150,
+  resize: 'none',
 })
 
-const ModalCenter = styled.div({
-  justifyContent: 'center',
-})
-
-const StyledButton = styled.button ({
+const StyledButton = styled.button({
   border: 'none',
   borderRadius: 35,
   backgroundColor: '#e9665b',
