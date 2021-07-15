@@ -53,9 +53,25 @@ const TodoItem: React.FC<Props> = (Props) => {
 
   const handleEnterKeyDownInContent = useCallback((event) => {
     if (event.keyCode === 13) {
-      setIsModalOpen(false)
+      if (!item.content.trim()) {
+        alert('빈 칸은 입력하실 수 없습니다.')
+        return
+      }
+      else {
+        setIsModalOpen(false)
+      }
     }
-  }, [setIsModalOpen])
+  }, [setIsModalOpen, item.content])
+
+  const closeOnDimmerClick = () => {
+    if (!item.content.trim()) {
+      alert('빈 칸은 입력하실 수 없습니다.')
+      return
+    }
+    else {
+      return setIsModalOpen(false)
+    }
+  }
 
   return (
     <MainContainer>
@@ -78,7 +94,7 @@ const TodoItem: React.FC<Props> = (Props) => {
       <Modal
         open={isModalOpen}
         closeOnDimmerClick={true}
-        onClose={() => setIsModalOpen(false)}
+        onClose={closeOnDimmerClick}
         size={isModalLarge ? 'large' : 'mini'}
       >
         <ModalHeaderContainer>
