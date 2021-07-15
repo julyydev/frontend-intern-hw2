@@ -18,13 +18,12 @@ const TodoItem: React.FC<Props> = (Props) => {
   const modalHeight = () => {
     if (isModalLarge) {
       return 800
-    }
-    else {
+    } else {
       return 200
     }
   }
 
-  const handleButtonClick = useCallback((item: Todo) => {
+  const handleDeleteButtonClick = useCallback((item: Todo) => {
     dispatch(actions.deleteTodo(item))
   }, [dispatch])
 
@@ -52,7 +51,7 @@ const TodoItem: React.FC<Props> = (Props) => {
     dispatch(actions.changeContentTodo(newTodo))
   }, [dispatch])
 
-  const handleEnterKeyDown = useCallback((event) => {
+  const handleEnterKeyDownInContent = useCallback((event) => {
     if (event.keyCode === 13) {
       setIsModalOpen(false)
     }
@@ -70,62 +69,49 @@ const TodoItem: React.FC<Props> = (Props) => {
       >
         {item.content}
       </TextContainer>
-      <Button
+      <DeleteButton
         size='mini'
-        style={{width: 55, height: 20, fontsize: 10}}
-        onClick={handleButtonClick.bind({}, item)}
+        onClick={handleDeleteButtonClick.bind({}, item)}
       >
         삭제
-      </Button>
+      </DeleteButton>
       <Modal
         open={isModalOpen}
         closeOnDimmerClick={true}
         onClose={() => setIsModalOpen(false)}
-        size={isModalLarge ? 'fullscreen' : 'mini'}
+        size={isModalLarge ? 'large' : 'mini'}
       >
-        <Grid.Column
-          style={{display: 'flex', justifyContent: 'space-between', marginBottom: 0, backgroundColor: '#f9f2f4'}}
-        >
-          <TextArea
-            style={{
-              display: 'flex',
-              width: '90%',
-              height: 25,
-              resize: 'none',
-              backgroundColor: '#f9f2f4',
-              border: 'none',
-              fontWeight: 'bold',
-              outlineStyle: 'none',
-            }}
-            value={item.content}
-            onChange={(event) => {
-              handleContentChange(event.target.value, item)
-            }}
-            onKeyDown={handleEnterKeyDown}
-          >
-          </TextArea>
-
-          <Modal.Actions>
+        <ModalHeaderContainer>
+          <ModalButtonContainer>
             <StyledButton
               style={{backgroundColor: '#fa504d'}}
               onClick={() => setIsModalOpen(false)}
             />
             <StyledButton
+              style={{backgroundColor: '#fdb239'}}
+              onClick={() => setIsModalOpen(true)}
+            />
+            <StyledButton
               style={{backgroundColor: '#29bc41'}}
               onClick={() => setIsModalLarge(prev => !prev)}
             />
-          </Modal.Actions>
-        </Grid.Column>
+          </ModalButtonContainer>
+          <ModalContentContainer>
+            <ModalContentArea
+              value={item.content}
+              onChange={(event) => {
+                handleContentChange(event.target.value, item)
+              }}
+              onKeyDown={handleEnterKeyDownInContent}
+            >
+            </ModalContentArea>
+          </ModalContentContainer>
+        </ModalHeaderContainer>
         <Grid.Column>
-          <Modal.Description
-          >
-            <TextArea
+          <Modal.Description>
+            <ModalMemoArea
               style={{
-                display: 'flex',
-                width: '100%',
                 height: modalHeight(),
-                resize: 'none',
-                outlineStyle: 'none',
               }}
               value={item.memo}
               onChange={(event) => {
@@ -152,9 +138,53 @@ const TextContainer = styled.div({
   width: 147,
 })
 
+const DeleteButton = styled(Button)({
+  width: 55,
+  height: 20,
+  fontsize: 10,
+})
+
+const ModalHeaderContainer = styled(Grid.Column)({
+  display: 'flex',
+  alignItems: 'center',
+  backgroundColor: '#f9f2f4',
+})
+
 const StyledButton = styled.button({
   border: 'none',
-  padding: 7,
+  padding: 6.5,
   borderRadius: 100,
-  marginRight: 3,
+  marginLeft: 5,
+})
+
+const ModalButtonContainer = styled(Grid.Row)({
+  marginLeft: 8,
+  marginBottom: 6,
+})
+
+const ModalContentContainer = styled(Grid.Row)({
+  flex: 1,
+  display: 'flex',
+  justifyContent: 'center',
+})
+
+const ModalContentArea = styled(TextArea)({
+  flex: 0.9,
+  height: 25,
+  marginTop: 7,
+  marginBottom: 7,
+  resize: 'none',
+  backgroundColor: '#eae3e5',
+  border: 'none',
+  borderRadius: 5,
+  fontWeight: 'bold',
+  outlineStyle: 'none',
+  textAlign: 'center',
+})
+
+const ModalMemoArea = styled(TextArea)({
+  display: 'flex',
+  width: '100%',
+  resize: 'none',
+  outlineStyle: 'none',
 })
