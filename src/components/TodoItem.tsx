@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react'
-import {Button, Checkbox, Modal} from 'semantic-ui-react'
+import {Button, Checkbox, Modal, Grid, TextArea, Header} from 'semantic-ui-react'
 import styled from '@emotion/styled'
 import {actions, Todo} from '../features'
 import {useDispatch} from 'react-redux'
@@ -14,6 +14,15 @@ const TodoItem: React.FC<Props> = (Props) => {
   const dispatch = useDispatch()
 
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalLarge, setIsModalLarge] = useState(false)
+  const modalHeight = () => {
+    if (isModalLarge) {
+      return 800
+    }
+    else {
+      return 200
+    }
+  }
 
   const handleButtonClick = useCallback((item: Todo) => {
     dispatch(actions.deleteTodo(item))
@@ -56,18 +65,44 @@ const TodoItem: React.FC<Props> = (Props) => {
         open={isModalOpen}
         closeOnDimmerClick={true}
         onClose={() => setIsModalOpen(false)}
-        size={'mini'}
+        size={isModalLarge ? 'fullscreen' : 'mini'}
       >
-        <div style={{display: 'flex', justifyContent: 'space-between'}}>
-          <Modal.Header>{item.content}</Modal.Header>
-          <StyledButton onClick={() => setIsModalOpen(false)}>X</StyledButton>
-        </div>
-        <ModalContainer
-          value={item.memo}
-          onChange={(event) => {
-            handleMemoChange(event.target.value, item)
-          }}
-        />
+        <Grid.Column
+          style={{display: 'flex', justifyContent: 'space-between', marginBottom: -10}}
+        >
+          <Header
+            style={{marginLeft: 5}}
+          >
+            {item.content}
+          </Header>
+          <Modal.Actions>
+            <StyledButton
+              style={{backgroundColor: '#e9665b'}}
+              onClick={() => setIsModalOpen(false)}
+            />
+            <StyledButton
+              style={{backgroundColor: '#5fc252'}}
+              onClick={() => setIsModalLarge(prev => !prev)}
+            />
+          </Modal.Actions>
+        </Grid.Column>
+        <Grid.Column>
+          <Modal.Description
+          >
+            <TextArea
+              style={{
+                display: 'flex',
+                width: '100%',
+                height: modalHeight(),
+                resize: 'none',
+              }}
+              value={item.memo}
+              onChange={(event) => {
+                handleMemoChange(event.target.value, item)
+              }}
+            />
+          </Modal.Description>
+        </Grid.Column>
       </Modal>
     </MainContainer>
   )
@@ -86,16 +121,9 @@ const TextContainer = styled.div({
   width: 147,
 })
 
-const ModalContainer = styled.textarea({
-  marginLeft: 5,
-  marginRight: 5,
-  width: 350,
-  height: 150,
-  resize: 'none',
-})
-
 const StyledButton = styled.button({
   border: 'none',
-  borderRadius: 35,
-  backgroundColor: '#e9665b',
+  padding: 7,
+  borderRadius: 100,
+  marginRight: 3,
 })
