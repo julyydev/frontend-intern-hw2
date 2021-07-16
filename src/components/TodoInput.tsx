@@ -2,7 +2,7 @@ import React, {ChangeEvent, useCallback, useState} from 'react'
 import {Button, Input} from 'semantic-ui-react'
 import styled from '@emotion/styled'
 import {useDispatch} from 'react-redux'
-import {actions} from '../features'
+import {todoSlice} from '../features'
 
 const TodoInput = () => {
   const dispatch = useDispatch()
@@ -17,7 +17,7 @@ const TodoInput = () => {
       alert('할 일을 입력하지 않았습니다!')
       return
     } else {
-      dispatch(actions.addTodo({
+      dispatch(todoSlice.actions.add({
         content: input,
       }))
       setInput('')

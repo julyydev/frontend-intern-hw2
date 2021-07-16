@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react'
 import {Button, Checkbox, Modal, Grid, TextArea} from 'semantic-ui-react'
 import styled from '@emotion/styled'
-import {actions, Todo} from '../features'
+import {todoSlice, Todo} from '../features'
 import {useDispatch} from 'react-redux'
 import 'semantic-ui-css/semantic.min.css'
 
@@ -24,11 +24,11 @@ const TodoItem: React.FC<Props> = (Props) => {
   }
 
   const handleDeleteButtonClick = useCallback((item: Todo) => {
-    dispatch(actions.deleteTodo(item))
+    dispatch(todoSlice.actions.delete(item))
   }, [dispatch])
 
   const handleCheckboxClick = useCallback((item: Todo) => {
-    dispatch(actions.toggleTodo(item))
+    dispatch(todoSlice.actions.toggle(item))
   }, [dispatch])
 
   const handleMemoChange = useCallback((newMemo: string, item: Todo) => {
@@ -38,7 +38,7 @@ const TodoItem: React.FC<Props> = (Props) => {
       check: item.check,
       memo: newMemo,
     }
-    dispatch(actions.memoTodo(newTodo))
+    dispatch(todoSlice.actions.memo(newTodo))
   }, [dispatch])
 
   const handleContentChange = useCallback((newContent: string, item: Todo) => {
@@ -48,7 +48,7 @@ const TodoItem: React.FC<Props> = (Props) => {
       check: item.check,
       memo: item.memo,
     }
-    dispatch(actions.changeContentTodo(newTodo))
+    dispatch(todoSlice.actions.changeContent(newTodo))
   }, [dispatch])
 
   const handleEnterKeyDownInContent = useCallback((event) => {

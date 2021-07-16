@@ -3,7 +3,6 @@ import {
   createSlice,
   createEntityAdapter,
   EntityState,
-  createAction,
   createSelector,
 } from '@reduxjs/toolkit'
 
@@ -27,7 +26,7 @@ const initialState: TodoList = {
 }
 
 let index = 1
-const todoSlice = createSlice({
+export const todoSlice = createSlice({
   name: 'todoItem',
   initialState,
   reducers: {
@@ -69,14 +68,6 @@ const todoSlice = createSlice({
     },
   },
 })
-
-const addTodo = createAction<object>('todoItem/add')
-const deleteTodo = createAction<object>('todoItem/delete')
-const toggleTodo = createAction<object>('todoItem/toggle')
-const memoTodo = createAction<object>('todoItem/memo')
-const changeContentTodo = createAction<object>('todoItem/changeContent')
-
-export const actions = {addTodo, deleteTodo, toggleTodo, memoTodo, changeContentTodo}
 
 export const rootReducer = combineReducers({
   todos: todoSlice.reducer,
