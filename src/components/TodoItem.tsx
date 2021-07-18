@@ -23,15 +23,15 @@ const TodoItem: React.FC<Props> = (Props) => {
     }
   }
 
-  const handleDeleteButtonClick = useCallback((item: Todo) => {
+  const handleDeleteButtonClick = useCallback(() => {
     dispatch(todoSlice.actions.delete(item))
-  }, [dispatch])
+  }, [dispatch, item])
 
-  const handleCheckboxClick = useCallback((item: Todo) => {
+  const handleCheckboxClick = useCallback(() => {
     dispatch(todoSlice.actions.toggle(item))
-  }, [dispatch])
+  }, [dispatch, item])
 
-  const handleMemoChange = useCallback((newMemo: string, item: Todo) => {
+  const handleMemoChange = useCallback((newMemo: string) => {
     const newTodo = {
       id: item.id,
       content: item.content,
@@ -39,9 +39,9 @@ const TodoItem: React.FC<Props> = (Props) => {
       memo: newMemo,
     }
     dispatch(todoSlice.actions.memo(newTodo))
-  }, [dispatch])
+  }, [dispatch, item])
 
-  const handleContentChange = useCallback((newContent: string, item: Todo) => {
+  const handleContentChange = useCallback((newContent: string) => {
     const newTodo = {
       id: item.id,
       content: newContent,
@@ -49,7 +49,7 @@ const TodoItem: React.FC<Props> = (Props) => {
       memo: item.memo,
     }
     dispatch(todoSlice.actions.changeContent(newTodo))
-  }, [dispatch])
+  }, [dispatch, item])
 
   const handleEnterKeyDownInContent = useCallback((event) => {
     if (event.keyCode === 13) {
@@ -78,7 +78,7 @@ const TodoItem: React.FC<Props> = (Props) => {
       <Checkbox
         style={{width: 20}}
         checked={item.check}
-        onClick={handleCheckboxClick.bind({}, item)}
+        onClick={handleCheckboxClick}
       />
       <TextContainer
         onClick={() => setIsModalOpen(true)}
@@ -87,7 +87,7 @@ const TodoItem: React.FC<Props> = (Props) => {
       </TextContainer>
       <DeleteButton
         size='mini'
-        onClick={handleDeleteButtonClick.bind({}, item)}
+        onClick={handleDeleteButtonClick}
       >
         삭제
       </DeleteButton>
@@ -116,7 +116,7 @@ const TodoItem: React.FC<Props> = (Props) => {
             <ModalContentArea
               value={item.content}
               onChange={(event) => {
-                handleContentChange(event.target.value, item)
+                handleContentChange(event.target.value)
               }}
               onKeyDown={handleEnterKeyDownInContent}
             >
@@ -131,7 +131,7 @@ const TodoItem: React.FC<Props> = (Props) => {
               }}
               value={item.memo}
               onChange={(event) => {
-                handleMemoChange(event.target.value, item)
+                handleMemoChange(event.target.value)
               }}
             />
           </Modal.Description>
