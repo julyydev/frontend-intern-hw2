@@ -14,7 +14,7 @@ const TodoItemList = () => {
     <MainContainer>
       <RestContainer>끝내지 못한 일의 개수: {restWorkCount}개</RestContainer>
       {todoList.map((item: Todo) => (
-        <TodoItem item={item}/>
+        <TodoItem key={item.id} item={item}/>
       ))}
     </MainContainer>
   )
