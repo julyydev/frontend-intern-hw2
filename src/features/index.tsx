@@ -1,5 +1,4 @@
 import {
-  combineReducers,
   createSlice,
   createEntityAdapter,
   EntityState,
@@ -69,15 +68,9 @@ export const todoSlice = createSlice({
   },
 })
 
-export const rootReducer = combineReducers({
-  todos: todoSlice.reducer,
-})
-
 const {selectAll} = todoAdapter.getSelectors()
 
 export const selectTodoList = createSelector(
   (state: TodoList) => state.list,
   (list: EntityState<Todo>) => selectAll(list),
 )
-
-export type RootState = ReturnType<typeof rootReducer>
