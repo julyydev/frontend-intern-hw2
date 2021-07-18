@@ -1,9 +1,4 @@
-import {
-  createSlice,
-  createEntityAdapter,
-  EntityState,
-  createSelector,
-} from '@reduxjs/toolkit'
+import {createSlice, createEntityAdapter, EntityState} from '@reduxjs/toolkit'
 
 export interface Todo {
   id: number,
@@ -12,11 +7,11 @@ export interface Todo {
   memo: string,
 }
 
-interface TodoList {
+export interface TodoList {
   list: EntityState<Todo>,
 }
 
-const todoAdapter = createEntityAdapter<Todo>({
+export const todoAdapter = createEntityAdapter<Todo>({
   selectId: (item) => item.id,
 })
 
@@ -67,10 +62,3 @@ export const todoSlice = createSlice({
     },
   },
 })
-
-const {selectAll} = todoAdapter.getSelectors()
-
-export const selectTodoList = createSelector(
-  (state: TodoList) => state.list,
-  (list: EntityState<Todo>) => selectAll(list),
-)

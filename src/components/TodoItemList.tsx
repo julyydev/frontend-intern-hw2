@@ -2,8 +2,9 @@ import React from 'react'
 import TodoItem from './TodoItem'
 import styled from '@emotion/styled'
 import {useSelector} from 'react-redux'
-import {selectTodoList, Todo} from '../features'
+import {Todo} from '../features'
 import {RootState} from '../features/Root'
+import {selectTodoList} from '../features/Selector'
 
 const TodoItemList = () => {
   const todoList = useSelector<RootState, Todo[]>(state => selectTodoList(state.todos))
