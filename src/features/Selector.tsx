@@ -7,3 +7,8 @@ export const selectTodoList = createSelector(
   (state: TodoList) => state.list,
   (list: EntityState<Todo>) => selectAll(list),
 )
+
+export const selectRestWork = createSelector(
+  (state: TodoList) => state.list,
+  (list: EntityState<Todo>) => selectAll(list).filter((item) => !item.check)
+)
