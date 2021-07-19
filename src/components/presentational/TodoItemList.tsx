@@ -1,5 +1,6 @@
 import React from 'react'
 import TodoItem from './TodoItem'
+import TodoDeleteAll from './TodoDeleteAll'
 import styled from '@emotion/styled'
 import {useSelector} from 'react-redux'
 import {Todo} from '../../features'
@@ -16,7 +17,10 @@ const TodoItemList = () => {
     }
     else {
       return (
-        <RestContainer>끝내지 못한 일의 개수: {restWorkCount}개</RestContainer>
+        <RestContainer>
+          끝내지 못한 일의 개수: {restWorkCount}개
+          <TodoDeleteAll/>
+        </RestContainer>
       )
     }
   }

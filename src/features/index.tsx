@@ -36,6 +36,9 @@ export const todoSlice = createSlice({
     delete(state, {payload: {id}}) {
       todoAdapter.removeOne(state.list, id)
     },
+    deleteAll(state) {
+      todoAdapter.removeAll(state.list)
+    },
     toggle(state, {payload: {id, check}}) {
       todoAdapter.updateOne(state.list, {
         id,
