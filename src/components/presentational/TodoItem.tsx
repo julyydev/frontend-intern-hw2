@@ -96,6 +96,7 @@ const TextContainer = styled.div({
   marginLeft: 8,
   marginBottom: 5,
   width: 147,
+  wordBreak: 'break-word',
 })
 
 const ModalHeaderContainer = styled(Grid.Column)({
