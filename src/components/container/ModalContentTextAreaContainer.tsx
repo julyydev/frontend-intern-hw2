@@ -25,6 +25,7 @@ const ModalContentTextAreaContainer = ({item, setIsModalOpen, style}: Props) => 
   const handleEnterKeyDown = useCallback((event) => {
     if (event.keyCode === 13) {
       if (!item.content.trim()) {
+        event.preventDefault()
         alert('빈 칸은 입력하실 수 없습니다.')
         return
       }
@@ -38,6 +39,7 @@ const ModalContentTextAreaContainer = ({item, setIsModalOpen, style}: Props) => 
     <TextArea
       style={style}
       value={item.content}
+      placeholder='할 일을 입력하세요.'
       onChange={(event) => {
         handleContentChange(event.target.value)
       }}

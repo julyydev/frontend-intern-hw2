@@ -25,6 +25,7 @@ const ModalMemoTextAreaContainer = ({item, style}: Props) => {
     <TextArea
       style={style}
       value={item.memo}
+      placeholder='메모를 입력하세요.'
       onChange={(event) => {
         handleMemoChange(event.target.value)
       }}
