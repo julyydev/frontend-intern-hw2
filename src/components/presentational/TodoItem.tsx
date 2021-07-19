@@ -3,10 +3,10 @@ import {Modal, Grid} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import styled from '@emotion/styled'
 import {Todo} from '../../features'
-import {DeleteButtonContainer} from '../container/DeleteButtonContainer'
-import {CheckboxContainer} from '../container/CheckboxContainer'
-import {ModalContentContainer} from '../container/ModalContentContainer'
-import {ModalMemoContainer} from '../container/ModalMemoContainer'
+import DeleteButtonContainer from '../container/DeleteButtonContainer'
+import CheckboxContainer from '../container/CheckboxContainer'
+import ModalContentTextAreaContainer from '../container/ModalContentTextAreaContainer'
+import ModalMemoTextAreaContainer from '../container/ModalMemoTextAreaContainer'
 
 interface Props {
   item: Todo
@@ -17,33 +17,31 @@ const TodoItem: React.FC<Props> = (Props) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalLarge, setIsModalLarge] = useState(false)
-  const modalHeight = () => {
-    if (isModalLarge) {
-      return 800
-    } else {
-      return 200
-    }
-  }
 
   const closeOnDimmerClick = () => {
     if (!item.content.trim()) {
       alert('빈 칸은 입력하실 수 없습니다.')
       return
-    }
-    else {
+    } else {
       return setIsModalOpen(false)
     }
   }
 
   return (
     <MainContainer>
-      <CheckboxContainer item={item}/>
+      <CheckboxContainer
+        style={Styles.checkboxContainer}
+        item={item}
+      />
       <TextContainer
         onClick={() => setIsModalOpen(true)}
       >
         {item.content}
       </TextContainer>
-      <DeleteButtonContainer item={item}/>
+      <DeleteButtonContainer
+        style={Styles.deleteButtonContainer}
+        item={item}
+      />
       <Modal
         open={isModalOpen}
         closeOnDimmerClick={true}
@@ -58,28 +56,30 @@ const TodoItem: React.FC<Props> = (Props) => {
             />
             <StyledButton
               style={{backgroundColor: '#fdb239'}}
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsModalOpen(false)}
             />
             <StyledButton
               style={{backgroundColor: '#29bc41'}}
               onClick={() => setIsModalLarge(prev => !prev)}
             />
           </ModalButtonContainer>
-          <ModalContentArea>
-            <ModalContentContainer
+          <ModalContentContainer>
+            <ModalContentTextAreaContainer
+              style={Styles.modalContentTextAreaContainer}
               item={item}
               setIsModalOpen={setIsModalOpen}
             />
-          </ModalContentArea>
+          </ModalContentContainer>
         </ModalHeaderContainer>
-        <Grid.Column>
-          <Modal.Description>
-            <ModalMemoContainer
-              item={item}
-              modalHeight={modalHeight()}
-            />
-          </Modal.Description>
-        </Grid.Column>
+        <ModalMemoContainer>
+          <ModalMemoTextAreaContainer
+            style={{
+              height: (isModalLarge ? 800 : 200),
+              ...Styles.modalMemoTextAreaContainer,
+            }}
+            item={item}
+          />
+        </ModalMemoContainer>
       </Modal>
     </MainContainer>
   )
@@ -104,6 +104,11 @@ const ModalHeaderContainer = styled(Grid.Column)({
   backgroundColor: '#f9f2f4',
 })
 
+const ModalMemoContainer = styled(Grid.Column)({
+  display: 'flex',
+  justifyContent: 'center',
+})
+
 const StyledButton = styled.button({
   border: 'none',
   padding: 6.5,
@@ -116,8 +121,41 @@ const ModalButtonContainer = styled(Grid.Row)({
   marginBottom: 6,
 })
 
-const ModalContentArea = styled(Grid.Row)({
+const ModalContentContainer = styled(Grid.Row)({
   flex: 1,
   display: 'flex',
   justifyContent: 'center',
 })
+
+const Styles: {[key: string]: React.CSSProperties} = {
+  checkboxContainer: {
+    width: 20,
+  },
+
+  deleteButtonContainer: {
+    width: 55,
+    height: 20,
+    fontSize: 10,
+  },
+
+  modalContentTextAreaContainer: {
+    flex: 0.9,
+    height: 25,
+    marginTop: 7,
+    marginBottom: 7,
+    resize: 'none',
+    backgroundColor: '#eae3e5',
+    outlineStyle: 'none',
+    border: 'none',
+    borderRadius: 5,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+
+  modalMemoTextAreaContainer: {
+    display: 'flex',
+    width: '100%',
+    resize: 'none',
+    outlineStyle: 'none',
+  },
+}

@@ -5,7 +5,10 @@ import {Todo, todoSlice} from '../../features'
 
 interface Props {
   item: Todo,
-}export const CheckboxContainer = ({item}: Props) => {
+  style: React.CSSProperties
+}
+
+const CheckboxContainer = ({item, style}: Props) => {
   const dispatch = useDispatch()
 
   const handleCheckboxClick = useCallback(() => {
@@ -14,9 +17,11 @@ interface Props {
 
   return (
     <Checkbox
-      style={{width: 20}}
+      style={style}
       checked={item.check}
       onClick={handleCheckboxClick}
     />
   )
 }
+
+export default CheckboxContainer

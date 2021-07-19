@@ -6,9 +6,10 @@ import {TextArea} from 'semantic-ui-react'
 interface Props {
   item: Todo,
   setIsModalOpen: (isOpen: boolean) => void,
+  style: React.CSSProperties,
 }
 
-export const ModalContentContainer = ({item, setIsModalOpen}: Props) => {
+const ModalContentTextAreaContainer = ({item, setIsModalOpen, style}: Props) => {
   const dispatch = useDispatch()
 
   const handleContentChange = useCallback((newContent: string) => {
@@ -35,19 +36,7 @@ export const ModalContentContainer = ({item, setIsModalOpen}: Props) => {
 
   return (
     <TextArea
-      style={{
-        flex: 0.9,
-        height: 25,
-        marginTop: 7,
-        marginBottom: 7,
-        resize: 'none',
-        backgroundColor: '#eae3e5',
-        border: 'none',
-        borderRadius: 5,
-        fontWeight: 'bold',
-        outlineStyle: 'none',
-        textAlign: 'center',
-      }}
+      style={style}
       value={item.content}
       onChange={(event) => {
         handleContentChange(event.target.value)
@@ -56,3 +45,5 @@ export const ModalContentContainer = ({item, setIsModalOpen}: Props) => {
     />
   )
 }
+
+export default ModalContentTextAreaContainer

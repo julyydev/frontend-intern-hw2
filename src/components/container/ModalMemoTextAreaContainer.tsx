@@ -5,10 +5,10 @@ import {TextArea} from 'semantic-ui-react'
 
 interface Props {
   item: Todo,
-  modalHeight: number
+  style: React.CSSProperties
 }
 
-export const ModalMemoContainer = ({item, modalHeight}: Props) => {
+const ModalMemoTextAreaContainer = ({item, style}: Props) => {
   const dispatch = useDispatch()
 
   const handleMemoChange = useCallback((newMemo: string) => {
@@ -23,13 +23,7 @@ export const ModalMemoContainer = ({item, modalHeight}: Props) => {
 
   return (
     <TextArea
-      style={{
-        display: 'flex',
-        width: '100%',
-        resize: 'none',
-        outlineStyle: 'none',
-        height: modalHeight,
-      }}
+      style={style}
       value={item.memo}
       onChange={(event) => {
         handleMemoChange(event.target.value)
@@ -37,3 +31,5 @@ export const ModalMemoContainer = ({item, modalHeight}: Props) => {
     />
   )
 }
+
+export default ModalMemoTextAreaContainer

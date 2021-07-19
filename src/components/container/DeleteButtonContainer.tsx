@@ -5,9 +5,10 @@ import {Todo, todoSlice} from '../../features'
 
 interface Props {
   item: Todo
+  style: React.CSSProperties
 }
 
-export const DeleteButtonContainer = ({item}: Props) => {
+const DeleteButtonContainer = ({item, style}: Props) => {
   const dispatch = useDispatch()
 
   const handleDeleteButtonClick = useCallback(() => {
@@ -16,7 +17,7 @@ export const DeleteButtonContainer = ({item}: Props) => {
 
   return (
     <Button
-      style={{width: 55, height: 20, fontsize: 10,}}
+      style={style}
       size='mini'
       onClick={handleDeleteButtonClick}
     >
@@ -24,3 +25,5 @@ export const DeleteButtonContainer = ({item}: Props) => {
     </Button>
   )
 }
+
+export default DeleteButtonContainer

@@ -1,14 +1,14 @@
 import React, {ChangeEvent, useCallback} from 'react'
 import {Input} from 'semantic-ui-react'
-import {useAddContent} from '../../hooks/useAddContent'
+import useAddContent from '../../hooks/useAddContent'
 
 interface Props {
   input: string,
   setInput: (content: string) => void,
-  styles: {width: number, height: number},
+  style: React.CSSProperties,
 }
 
-export const ContentInputContainer = ({input, setInput, styles}: Props) => {
+const ContentInputContainer = ({input, setInput, style}: Props) => {
   const {addContent} = useAddContent(input, setInput)
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +23,7 @@ export const ContentInputContainer = ({input, setInput, styles}: Props) => {
 
   return (
     <Input
-      style={styles}
+      style={style}
       size='mini'
       type='text'
       value={input}
@@ -33,3 +33,5 @@ export const ContentInputContainer = ({input, setInput, styles}: Props) => {
     />
   )
 }
+
+export default ContentInputContainer

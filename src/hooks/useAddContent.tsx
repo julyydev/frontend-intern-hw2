@@ -2,7 +2,7 @@ import {useCallback} from 'react'
 import {useDispatch} from 'react-redux'
 import {todoSlice} from '../features'
 
-export const useAddContent = (input: string, setInput: (content: string) => void,) => {
+const useAddContent = (input: string, setInput: (content: string) => void,) => {
   const dispatch = useDispatch()
 
   const addContent = useCallback(() => {
@@ -19,3 +19,5 @@ export const useAddContent = (input: string, setInput: (content: string) => void
 
   return {addContent}
 }
+
+export default useAddContent
