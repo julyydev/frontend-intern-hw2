@@ -10,9 +10,20 @@ const TodoItemList = () => {
   const todoList = useSelector<RootState, Todo[]>(state => selectTodoList(state.todo))
   const restWorkCount = useSelector<RootState, Todo[]>(state => selectRestWork(state.todo)).length
 
+  const handleMessage = () => {
+    if (todoList.length === 0) {
+      return <RestContainer>환영합니다. 해야할 일을 추가하세요.</RestContainer>
+    }
+    else {
+      return (
+        <RestContainer>끝내지 못한 일의 개수: {restWorkCount}개</RestContainer>
+      )
+    }
+  }
+
   return (
     <MainContainer>
-      <RestContainer>끝내지 못한 일의 개수: {restWorkCount}개</RestContainer>
+      {handleMessage()}
       {todoList.map((item: Todo) => (
         <TodoItem key={item.id} item={item}/>
       ))}
