@@ -19,14 +19,14 @@ const initialState: TodoList = {
   list: todoAdapter.getInitialState(),
 }
 
-let index = 1
+let idIndex = 1
 export const todoSlice = createSlice({
   name: 'todoItem',
   initialState,
   reducers: {
     add(state, {payload: {content}}) {
       const newTodo = {
-        id: index++,
+        id: idIndex++,
         content: content,
         check: false,
         memo: ''

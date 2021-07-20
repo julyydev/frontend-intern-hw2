@@ -1,9 +1,9 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
-import {RootState} from '../../features/Root'
-import {Todo} from '../../features'
+import {RootState} from '../../root/RootReducer'
+import {Todo} from '../../features/ducks/TodoDucks'
 import styled from '@emotion/styled'
-import {selectTodoList, selectRestWork} from '../../features/Selector'
+import {selectTodoList, selectRestWork} from '../../features/selector/TodoSelector'
 import ConnectedTodoDeleteAllButton from '../connected/ConnectedTodoDeleteAllButton'
 
 const TodoMessage = () => {

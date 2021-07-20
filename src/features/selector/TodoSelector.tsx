@@ -1,5 +1,5 @@
 import {EntityState, createSelector} from '@reduxjs/toolkit'
-import {todoAdapter, Todo, TodoList} from './index'
+import {todoAdapter, Todo, TodoList} from '../ducks/TodoDucks'
 
 const {selectAll} = todoAdapter.getSelectors()
 
