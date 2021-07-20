@@ -18,6 +18,10 @@ const TodoItem = (props: Props) => {
     <MainContainer>
       <ConnectedTodoCheckbox item={item}/>
       <TextContainer
+        style={{
+          textDecoration: (item.check ? 'line-through' : 'none'),
+          color: item.check ? 'lightgray' : 'black',
+        }}
         onClick={() => setIsModalOpen(true)}
       >
         {item.content}
