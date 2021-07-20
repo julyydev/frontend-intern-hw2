@@ -17,7 +17,7 @@ const TodoMessage = () => {
     else {
       return (
         <RestContainer>
-          끝내지 못한 일의 개수: {restWorkCount}개
+          {restWorkCount ? `끝내지 못한 일의 개수: ${restWorkCount}개` : '할 일을 모두 끝내셨습니다!'}
           <ConnectedTodoDeleteAllButton/>
         </RestContainer>
       )
