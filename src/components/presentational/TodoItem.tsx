@@ -3,17 +3,17 @@ import {Modal, Grid} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import styled from '@emotion/styled'
 import {Todo} from '../../features'
-import DeleteButtonContainer from '../container/DeleteButtonContainer'
-import CheckboxContainer from '../container/CheckboxContainer'
-import ModalContentTextAreaContainer from '../container/ModalContentTextAreaContainer'
-import ModalMemoTextAreaContainer from '../container/ModalMemoTextAreaContainer'
+import ConnectedTodoDeleteButton from '../connected/ConnectedTodoDeleteButton'
+import ConnectedTodoCheckbox from '../connected/ConnectedTodoCheckbox'
+import ConnectedModalContentTextArea from '../connected/ConnectedModalContentTextArea'
+import ConnectedModalMemoTextArea from '../connected/ConnectedModalMemoTextArea'
 
 interface Props {
   item: Todo
 }
 
-const TodoItem: React.FC<Props> = (Props) => {
-  const {item} = Props
+const TodoItem = (props: Props) => {
+  const {item} = props
 
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isModalLarge, setIsModalLarge] = useState(false)
@@ -29,17 +29,13 @@ const TodoItem: React.FC<Props> = (Props) => {
 
   return (
     <MainContainer>
-      <CheckboxContainer
-        style={Styles.checkboxContainer}
-        item={item}
-      />
+      <ConnectedTodoCheckbox item={item}/>
       <TextContainer
         onClick={() => setIsModalOpen(true)}
       >
         {item.content}
       </TextContainer>
-      <DeleteButtonContainer
-        style={Styles.deleteButtonContainer}
+      <ConnectedTodoDeleteButton
         item={item}
       />
       <Modal
@@ -64,20 +60,16 @@ const TodoItem: React.FC<Props> = (Props) => {
             />
           </ModalButtonContainer>
           <ModalContentContainer>
-            <ModalContentTextAreaContainer
-              style={Styles.modalContentTextAreaContainer}
+            <ConnectedModalContentTextArea
               item={item}
               setIsModalOpen={setIsModalOpen}
             />
           </ModalContentContainer>
         </ModalHeaderContainer>
         <ModalMemoContainer>
-          <ModalMemoTextAreaContainer
-            style={{
-              height: (isModalLarge ? 800 : 200),
-              ...Styles.modalMemoTextAreaContainer,
-            }}
+          <ConnectedModalMemoTextArea
             item={item}
+            isModalLarge={isModalLarge}
           />
         </ModalMemoContainer>
       </Modal>
@@ -127,36 +119,3 @@ const ModalContentContainer = styled(Grid.Row)({
   display: 'flex',
   justifyContent: 'center',
 })
-
-const Styles: {[key: string]: React.CSSProperties} = {
-  checkboxContainer: {
-    width: 20,
-  },
-
-  deleteButtonContainer: {
-    width: 55,
-    height: 20,
-    fontSize: 10,
-  },
-
-  modalContentTextAreaContainer: {
-    flex: 0.9,
-    height: 25,
-    marginTop: 7,
-    marginBottom: 7,
-    resize: 'none',
-    backgroundColor: '#eae3e5',
-    outlineStyle: 'none',
-    border: 'none',
-    borderRadius: 5,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-
-  modalMemoTextAreaContainer: {
-    display: 'flex',
-    width: '100%',
-    resize: 'none',
-    outlineStyle: 'none',
-  },
-}

@@ -1,9 +1,9 @@
 import React from 'react'
-import Main from './components/presentational/Main'
+import MainScreen from './MainScreen'
 
 const App = () => {
   return (
-    <Main/>
+    <MainScreen/>
   )
 }
 

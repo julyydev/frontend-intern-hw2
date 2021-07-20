@@ -1,19 +1,19 @@
 import React, {ChangeEvent, useCallback} from 'react'
-import {Input} from 'semantic-ui-react'
+import ContentInput from '../presentational/ContentInput'
 import useAddContent from '../../hooks/useAddContent'
 
 interface Props {
-  input: string,
-  setInput: (content: string) => void,
-  style: React.CSSProperties,
+  input: string
+  setInput: (content: string) => void
 }
 
-const ContentInputContainer = ({input, setInput, style}: Props) => {
+const ConnectedContentInput = (props: Props) => {
+  const {input, setInput} = props
   const {addContent} = useAddContent(input, setInput)
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value)
-  }
+  }, [input])
 
   const handleEnterKeyDown = useCallback((event) => {
     if (event.keyCode === 13) {
@@ -22,16 +22,12 @@ const ContentInputContainer = ({input, setInput, style}: Props) => {
   }, [addContent])
 
   return (
-    <Input
-      style={style}
-      size='mini'
-      type='text'
+    <ContentInput
       value={input}
-      placeholder='할 일을 입력하세요.'
       onChange={handleInputChange}
       onKeyDown={handleEnterKeyDown}
     />
   )
 }
 
-export default ContentInputContainer
+export default ConnectedContentInput

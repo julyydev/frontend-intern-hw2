@@ -1,14 +1,15 @@
 import {useDispatch} from 'react-redux'
 import React, {useCallback} from 'react'
 import {Todo, todoSlice} from '../../features'
-import {TextArea} from 'semantic-ui-react'
+import ModalMemoTextArea from '../presentational/ModalMemoTextArea'
 
 interface Props {
-  item: Todo,
-  style: React.CSSProperties
+  item: Todo
+  isModalLarge: boolean
 }
 
-const ModalMemoTextAreaContainer = ({item, style}: Props) => {
+const ConnectedModalMemoTextArea = (props: Props) => {
+  const {item, isModalLarge} = props
   const dispatch = useDispatch()
 
   const handleMemoChange = useCallback((newMemo: string) => {
@@ -22,10 +23,9 @@ const ModalMemoTextAreaContainer = ({item, style}: Props) => {
   }, [dispatch, item])
 
   return (
-    <TextArea
-      style={style}
+    <ModalMemoTextArea
+      isModalLarge={isModalLarge}
       value={item.memo}
-      placeholder='메모를 입력하세요.'
       onChange={(event) => {
         handleMemoChange(event.target.value)
       }}
@@ -33,4 +33,4 @@ const ModalMemoTextAreaContainer = ({item, style}: Props) => {
   )
 }
 
-export default ModalMemoTextAreaContainer
+export default ConnectedModalMemoTextArea

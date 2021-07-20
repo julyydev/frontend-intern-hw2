@@ -1,14 +1,14 @@
 import React, {useCallback} from 'react'
-import {Button} from 'semantic-ui-react'
+import ContentAddButton from '../presentational/ContentAddButton'
 import useAddContent from '../../hooks/useAddContent'
 
 interface Props {
   input: string,
   setInput: (content: string) => void,
-  style: React.CSSProperties,
 }
 
-const AddButtonContainer = ({input, setInput, style}: Props) => {
+const ConnectedContentAddButton = (props: Props) => {
+  const {input, setInput} = props
   const {addContent} = useAddContent(input, setInput)
 
   const handleAddButtonClick = useCallback(() => {
@@ -16,14 +16,8 @@ const AddButtonContainer = ({input, setInput, style}: Props) => {
   }, [addContent])
 
   return (
-    <Button
-      style={style}
-      size='mini'
-      onClick={handleAddButtonClick}
-    >
-      추가
-    </Button>
+    <ContentAddButton onClick={handleAddButtonClick}/>
   )
 }
 
-export default AddButtonContainer
+export default ConnectedContentAddButton

@@ -1,14 +1,13 @@
 import React, {useCallback} from 'react'
 import {useDispatch} from 'react-redux'
-import {Button} from 'semantic-ui-react'
+import TodoDeleteButton from '../presentational/TodoDeleteButton'
 import {Todo, todoSlice} from '../../features'
 
 interface Props {
   item: Todo
-  style: React.CSSProperties
 }
 
-const DeleteButtonContainer = ({item, style}: Props) => {
+const ConnectedTodoDeleteButton = ({item}: Props) => {
   const dispatch = useDispatch()
 
   const handleDeleteButtonClick = useCallback(() => {
@@ -16,14 +15,8 @@ const DeleteButtonContainer = ({item, style}: Props) => {
   }, [dispatch, item])
 
   return (
-    <Button
-      style={style}
-      size='mini'
-      onClick={handleDeleteButtonClick}
-    >
-      삭제
-    </Button>
+    <TodoDeleteButton onClick={handleDeleteButtonClick}/>
   )
 }
 
-export default DeleteButtonContainer
+export default ConnectedTodoDeleteButton

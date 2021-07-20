@@ -4,7 +4,7 @@ import {RootState} from '../../features/Root'
 import {Todo} from '../../features'
 import styled from '@emotion/styled'
 import {selectTodoList, selectRestWork} from '../../features/Selector'
-import DeleteAllButtonContainer from '../container/DeleteAllButtonContainer'
+import ConnectedTodoDeleteAllButton from '../connected/ConnectedTodoDeleteAllButton'
 
 const TodoMessage = () => {
   const todoList = useSelector<RootState, Todo[]>(state => selectTodoList(state.todo))
@@ -18,9 +18,7 @@ const TodoMessage = () => {
       return (
         <RestContainer>
           끝내지 못한 일의 개수: {restWorkCount}개
-          <DeleteAllButtonContainer
-            style={Styles.deleteAllButtonContainer}
-          />
+          <ConnectedTodoDeleteAllButton/>
         </RestContainer>
       )
     }

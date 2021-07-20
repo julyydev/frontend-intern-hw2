@@ -1,15 +1,15 @@
 import {useDispatch} from 'react-redux'
 import React, {useCallback} from 'react'
 import {Todo, todoSlice} from '../../features'
-import {TextArea} from 'semantic-ui-react'
+import ModalContentTextArea from '../presentational/ModalContentTextArea'
 
 interface Props {
   item: Todo,
   setIsModalOpen: (isOpen: boolean) => void,
-  style: React.CSSProperties,
 }
 
-const ModalContentTextAreaContainer = ({item, setIsModalOpen, style}: Props) => {
+const ConnectedModalContentTextArea = (props: Props) => {
+  const {item, setIsModalOpen} = props
   const dispatch = useDispatch()
 
   const handleContentChange = useCallback((newContent: string) => {
@@ -36,10 +36,8 @@ const ModalContentTextAreaContainer = ({item, setIsModalOpen, style}: Props) => 
   }, [setIsModalOpen, item.content])
 
   return (
-    <TextArea
-      style={style}
+    <ModalContentTextArea
       value={item.content}
-      placeholder='할 일을 입력하세요.'
       onChange={(event) => {
         handleContentChange(event.target.value)
       }}
@@ -48,4 +46,4 @@ const ModalContentTextAreaContainer = ({item, setIsModalOpen, style}: Props) => 
   )
 }
 
-export default ModalContentTextAreaContainer
+export default ConnectedModalContentTextArea
