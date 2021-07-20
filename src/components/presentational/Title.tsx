@@ -5,13 +5,13 @@ import styled from '@emotion/styled'
 const TodosList = () => {
   return (
     <MainContainer>
-      <Header as='h1'>To Do List</Header>
+      <Header as='h1'>TODO!</Header>
     </MainContainer>
   )
 }
 
 export default TodosList
 
-const MainContainer = styled.div ({
-  textAlign: 'center'
+const MainContainer = styled.div({
+  textAlign: 'center',
 })

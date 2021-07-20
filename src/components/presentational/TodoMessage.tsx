@@ -42,12 +42,3 @@ const RestContainer = styled.div ({
   justifyContent: 'center',
   marginBottom: 5,
 })
-
-const Styles: {[key: string]: React.CSSProperties} = {
-  deleteAllButtonContainer: {
-    width: 82,
-    height: 20,
-    fontSize: 10,
-    marginLeft: 5,
-  },
-}
