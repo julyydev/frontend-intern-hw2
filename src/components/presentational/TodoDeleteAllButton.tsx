@@ -12,11 +12,16 @@ const TodoDeleteAllButton = (props: Props) => {
 
   return (
     <StyledButton
-      style={{marginLeft: 5}}
-      size='mini'
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 13,
+      }}
       onClick={onClick}
+      color='red'
     >
-      전체삭제
+      DELETE ALL
     </StyledButton>
   )
 }
@@ -24,7 +29,6 @@ const TodoDeleteAllButton = (props: Props) => {
 export default TodoDeleteAllButton
 
 const StyledButton = styled(Button)({
-  width: 82,
-  height: 20,
-  fontSize: 10,
+  width: 111,
+  height: 30,
 })

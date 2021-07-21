@@ -17,8 +17,8 @@ const TodoClock = () => {
 
   return (
     <MainContainer>
-      <Header as='h3' style={{marginTop: 10, marginBottom: -20,}}>{time.format('YYYY년 MM월 DD일')}</Header>
-      <Header as='h3' style={{marginBottom: 10,}}>{time.format('hh:mm:ss A')}</Header>
+      <Header as='h3' style={{marginTop: 10, marginBottom: -20,}}>{time.format('YYYY년 MM월 DD일 ddd')}</Header>
+      <Header as='h2' style={{marginBottom: 10,}}>{time.format('hh:mm:ss A')}</Header>
     </MainContainer>
   )
 }

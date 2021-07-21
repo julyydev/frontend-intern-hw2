@@ -5,14 +5,22 @@ import {useSelector} from 'react-redux'
 import {Todo} from '../../features/ducks/TodoDucks'
 import {RootState} from '../../root/RootReducer'
 import {selectTodoList} from '../../features/selector/TodoSelector'
+import {Container, Divider} from 'semantic-ui-react'
 
 const TodoItemList = () => {
   const todoList = useSelector<RootState, Todo[]>(state => selectTodoList(state.todo))
 
   return (
-    <MainContainer>
+    <MainContainer
+    >
       {todoList.map((item: Todo) => (
-        <TodoItem key={item.id} item={item}/>
+        <Container key={item.id} style={{justifyContent: 'center', width: 340}}
+        >
+          <Divider
+            style={{}}
+          />
+          <TodoItem item={item}/>
+        </Container>
       ))}
     </MainContainer>
   )
@@ -20,6 +28,7 @@ const TodoItemList = () => {
 
 export default TodoItemList
 
-const MainContainer = styled.div ({
+const MainContainer = styled(Container)({
   justifyContent: 'center',
+  display: 'flex'
 })

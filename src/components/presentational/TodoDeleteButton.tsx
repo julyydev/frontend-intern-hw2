@@ -1,6 +1,5 @@
-import React, {useCallback} from 'react'
-import {Button} from 'semantic-ui-react'
-import styled from '@emotion/styled'
+import React, {useCallback, useState} from 'react'
+import {Icon} from 'semantic-ui-react'
 
 interface Props {
   onClick: ReturnType<typeof useCallback>
@@ -8,21 +7,18 @@ interface Props {
 
 const TodoDeleteButton = (props: Props) => {
   const {onClick} = props
+  const [isMouseEnter, setIsMouseEnter] = useState(false)
 
   return (
-    <StyledButton
-      size='mini'
+    <Icon
+      name='delete'
+      style={{color: (isMouseEnter ? '#fa504d' : 'lightgray')}}
+      size='large'
       onClick={onClick}
-    >
-      삭제
-    </StyledButton>
+      onMouseOver={() => setIsMouseEnter(true)}
+      onMouseOut={() => setIsMouseEnter(false)}
+    />
   )
 }
 
 export default TodoDeleteButton
-
-const StyledButton = styled(Button)({
-  width: 55,
-  height: 20,
-  fontSize: 10,
-})

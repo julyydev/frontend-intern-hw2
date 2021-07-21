@@ -11,11 +11,17 @@ const ContentAddButton = (props: Props) => {
 
   return (
     <StyledButton
-      style={{marginLeft: 5}}
-      size='mini'
+      style={{
+        marginLeft: 5,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 13,
+      }}
       onClick={onClick}
+      color='green'
     >
-      추가
+      ADD
     </StyledButton>
   )
 }
@@ -24,5 +30,5 @@ export default ContentAddButton
 
 const StyledButton = styled(Button)({
   width: 55,
-  height: 20,
+  height: 30,
 })

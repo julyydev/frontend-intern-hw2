@@ -48,6 +48,8 @@ const MainContainer = styled.div({
 const TextContainer = styled.div({
   marginLeft: 8,
   marginBottom: 5,
-  width: 147,
+  width: 270,
   wordBreak: 'break-word',
+  fontSize: 18,
+  fontWeight: 'bold',
 })

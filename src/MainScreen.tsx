@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container} from 'semantic-ui-react'
+import {Container, Segment} from 'semantic-ui-react'
 import Title from './components/presentational/Title'
 import TodoInput from './components/presentational/TodoInput'
 import TodoItemList from './components/presentational/TodoItemList'
@@ -8,12 +8,18 @@ import Clock from './components/presentational/Clock'
 
 const MainScreen = () => {
   return (
-    <Container>
-      <Title/>
-      <Clock/>
-      <TodoMessage/>
-      <TodoItemList/>
-      <TodoInput/>
+    <Container
+      style={{width: 600, justifyContent: 'center', justifySelf: 'center'}}
+    >
+      <Segment
+        style={{marginTop: 30}}
+      >
+        <Title/>
+        <Clock/>
+        <TodoMessage/>
+        <TodoInput/>
+        <TodoItemList/>
+      </Segment>
     </Container>
   )
 }

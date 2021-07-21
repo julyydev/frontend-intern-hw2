@@ -13,7 +13,7 @@ const ContentInputContainer = (props: Props) => {
 
   return (
     <StyledInput
-      size='mini'
+      size='large'
       type='text'
       value={value}
       placeholder='할 일을 입력하세요.'
@@ -27,5 +27,6 @@ export default ContentInputContainer
 
 const StyledInput = styled(Input)({
   width: 170,
-  height: 20,
+  height: 30,
+  fontSize: 20,
 })

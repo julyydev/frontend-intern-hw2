@@ -4,7 +4,6 @@ import {RootState} from '../../root/RootReducer'
 import {Todo} from '../../features/ducks/TodoDucks'
 import styled from '@emotion/styled'
 import {selectTodoList, selectRestWork} from '../../features/selector/TodoSelector'
-import ConnectedTodoDeleteAllButton from '../connected/ConnectedTodoDeleteAllButton'
 
 const TodoMessage = () => {
   const todoList = useSelector<RootState, Todo[]>(state => selectTodoList(state.todo))
@@ -18,7 +17,6 @@ const TodoMessage = () => {
       return (
         <RestContainer>
           {restWorkCount ? `끝내지 못한 일의 개수: ${restWorkCount}개` : '할 일을 모두 끝내셨습니다!'}
-          <ConnectedTodoDeleteAllButton/>
         </RestContainer>
       )
     }
@@ -40,5 +38,7 @@ const MainContainer = styled.div ({
 const RestContainer = styled.div ({
   display: 'flex',
   justifyContent: 'center',
-  marginBottom: 5,
+  marginBottom: 15,
+  fontSize: 17,
+  fontWeight: 'bold',
 })
