@@ -28,5 +28,6 @@ export default TodoItemList
 
 const MainContainer = styled(Container)({
   justifyContent: 'center',
-  display: 'flex'
+  display: 'flex',
+  marginBottom: 10,
 })
