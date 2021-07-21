@@ -2,6 +2,7 @@ import React from 'react'
 import {Container, Segment} from 'semantic-ui-react'
 import Title from './components/presentational/Title'
 import TodoInput from './components/presentational/TodoInput'
+import TodoButtons from './components/presentational/TodoButtons'
 import TodoItemList from './components/presentational/TodoItemList'
 import TodoMessage from './components/presentational/TodoMessage'
 import Clock from './components/presentational/Clock'
@@ -18,6 +19,7 @@ const MainScreen = () => {
         <Clock/>
         <TodoMessage/>
         <TodoInput/>
+        <TodoButtons/>
         <TodoItemList/>
       </Segment>
     </Container>

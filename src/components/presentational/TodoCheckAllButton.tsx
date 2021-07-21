@@ -4,11 +4,12 @@ import styled from '@emotion/styled'
 
 interface Props {
   onClick: ReturnType<typeof useCallback>
+  restWorkCount: number
 }
 
 
-const TodoDeleteAllButton = (props: Props) => {
-  const {onClick} = props
+const TodoCheckAllButton = (props: Props) => {
+  const {onClick, restWorkCount} = props
 
   return (
     <StyledButton
@@ -19,14 +20,14 @@ const TodoDeleteAllButton = (props: Props) => {
         fontSize: 13,
       }}
       onClick={onClick}
-      color='red'
+      color='yellow'
     >
-      DELETE ALL
+      {restWorkCount === 0 ? 'UNCHECK ALL' : 'CHECK ALL'}
     </StyledButton>
   )
 }
 
-export default TodoDeleteAllButton
+export default TodoCheckAllButton
 
 const StyledButton = styled(Button)({
   width: 130,

@@ -14,11 +14,9 @@ const TodoItemList = () => {
     <MainContainer
     >
       {todoList.map((item: Todo) => (
-        <Container key={item.id} style={{justifyContent: 'center', width: 340}}
+        <Container key={item.id} style={{justifyContent: 'center', width: 270}}
         >
-          <Divider
-            style={{}}
-          />
+          <Divider/>
           <TodoItem item={item}/>
         </Container>
       ))}

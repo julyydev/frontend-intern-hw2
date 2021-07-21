@@ -26,7 +26,7 @@ const ContentInputContainer = (props: Props) => {
 export default ContentInputContainer
 
 const StyledInput = styled(Input)({
-  width: 170,
+  width: 204,
   height: 30,
   fontSize: 20,
 })
