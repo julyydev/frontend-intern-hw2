@@ -1,5 +1,5 @@
-import React, {useCallback} from 'react'
-import {Button} from 'semantic-ui-react'
+import React, {useCallback, useState} from 'react'
+import {Button, Confirm} from 'semantic-ui-react'
 import styled from '@emotion/styled'
 
 interface Props {
@@ -9,20 +9,34 @@ interface Props {
 
 const TodoDeleteAllButton = (props: Props) => {
   const {onClick} = props
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false)
 
   return (
-    <StyledButton
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: 13,
-      }}
-      onClick={onClick}
-      color='red'
-    >
-      DELETE ALL
-    </StyledButton>
+    <div>
+      <StyledButton
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: 13,
+        }}
+        onClick={() => setIsConfirmOpen(true)}
+        color='red'
+      >
+        DELETE ALL
+      </StyledButton>
+      <Confirm
+        open = {isConfirmOpen}
+        content='정말 목록을 모두 지우시겠습니까?'
+        cancelButton='아니오'
+        confirmButton='네'
+        onCancel={() => setIsConfirmOpen(false)}
+        onConfirm={() => {
+          setIsConfirmOpen(false)
+          onClick()
+        }}
+      />
+    </div>
   )
 }
 
