@@ -1,6 +1,6 @@
 import ConnectedModalContentTextArea from '../connected/ConnectedModalContentTextArea'
 import ConnectedModalMemoTextArea from '../connected/ConnectedModalMemoTextArea'
-import {Grid, Modal} from 'semantic-ui-react'
+import {Grid, Modal, Icon} from 'semantic-ui-react'
 import React, {useState} from 'react'
 import styled from '@emotion/styled'
 import {Todo} from '../../features/ducks/TodoDucks'
@@ -15,7 +15,7 @@ const TodoModal = (props: Props) => {
   const {item, isModalOpen, setIsModalOpen} = props
   const [isModalLarge, setIsModalLarge] = useState(false)
 
-  const closeOnDimmerClick = () => {
+  const handleClose = () => {
     if (!item.content.trim()) {
       alert('빈 칸은 입력하실 수 없습니다.')
       return
@@ -28,21 +28,19 @@ const TodoModal = (props: Props) => {
     <Modal
       open={isModalOpen}
       closeOnDimmerClick={true}
-      onClose={closeOnDimmerClick}
+      onClose={handleClose}
       size={isModalLarge ? 'large' : 'mini'}
     >
       <ModalHeaderContainer>
         <ModalButtonContainer>
-          <StyledButton
-            style={{backgroundColor: '#fa504d'}}
-            onClick={() => setIsModalOpen(false)}
+          <Icon
+            size='large'
+            name='window close outline'
+            onClick={() => handleClose()}
           />
-          <StyledButton
-            style={{backgroundColor: '#fdb239'}}
-            onClick={() => setIsModalOpen(false)}
-          />
-          <StyledButton
-            style={{backgroundColor: '#29bc41'}}
+          <Icon
+            size='large'
+            name={isModalLarge ? 'window minimize outline' : 'window maximize outline'}
             onClick={() => setIsModalLarge(prev => !prev)}
           />
         </ModalButtonContainer>
@@ -68,7 +66,7 @@ export default TodoModal
 const ModalHeaderContainer = styled(Grid.Column)({
   display: 'flex',
   alignItems: 'center',
-  backgroundColor: '#f9f2f4',
+  backgroundColor: '#b2bec3',
 })
 
 const ModalMemoContainer = styled(Grid.Column)({
@@ -76,16 +74,8 @@ const ModalMemoContainer = styled(Grid.Column)({
   justifyContent: 'center',
 })
 
-const StyledButton = styled.button({
-  border: 'none',
-  padding: 6.5,
-  borderRadius: 100,
-  marginLeft: 5,
-})
-
 const ModalButtonContainer = styled(Grid.Row)({
   marginLeft: 8,
-  marginBottom: 6,
 })
 
 const ModalContentContainer = styled(Grid.Row)({

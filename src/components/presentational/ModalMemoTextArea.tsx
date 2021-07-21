@@ -28,4 +28,6 @@ const StyledTextArea = styled(TextArea)({
   width: '100%',
   resize: 'none',
   outlineStyle: 'none',
+  borderRadius: 0,
+  fontSize: 16,
 })

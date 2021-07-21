@@ -13,6 +13,7 @@ const ModalContentTextArea = (props: Props) => {
 
   return (
     <StyledTextArea
+      style={{display: 'center'}}
       value={value}
       placeholder='할 일을 입력하세요.'
       onChange={onChange}
@@ -24,15 +25,18 @@ const ModalContentTextArea = (props: Props) => {
 export default ModalContentTextArea
 
 const StyledTextArea = styled(TextArea)({
-  flex: 0.9,
-  height: 25,
+  flex: 1,
+  height: 28,
   marginTop: 7,
   marginBottom: 7,
+  marginRight: 7,
   resize: 'none',
-  backgroundColor: '#eae3e5',
+  backgroundColor: '#dfe6e9',
   outlineStyle: 'none',
   border: 'none',
   borderRadius: 5,
+  fontSize: 18,
   fontWeight: 'bold',
   textAlign: 'center',
+  alignItems: 'center',
 })
