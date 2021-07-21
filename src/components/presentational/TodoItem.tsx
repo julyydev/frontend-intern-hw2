@@ -13,6 +13,7 @@ interface Props {
 const TodoItem = (props: Props) => {
   const {item} = props
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isMouseEnter, setIsMouseEnter] = useState(false)
 
   return (
     <MainContainer>
@@ -20,9 +21,11 @@ const TodoItem = (props: Props) => {
       <TextContainer
         style={{
           textDecoration: (item.check ? 'line-through' : 'none'),
-          color: item.check ? 'lightgray' : 'black',
+          color: item.check ? 'lightgray' : isMouseEnter ? '#fa504d' : 'black',
         }}
         onClick={() => setIsModalOpen(true)}
+        onMouseOver={() => setIsMouseEnter(true)}
+        onMouseOut={() => setIsMouseEnter(false)}
       >
         {item.content}
       </TextContainer>
@@ -43,11 +46,11 @@ export default TodoItem
 const MainContainer = styled.div({
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
 })
 
 const TextContainer = styled.div({
   marginLeft: 8,
-  marginBottom: 5,
   width: 270,
   wordBreak: 'break-word',
   fontSize: 18,
