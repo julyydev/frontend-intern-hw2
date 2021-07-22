@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 const TodosList = () => {
   return (
     <MainContainer>
-      <Header style={{fontSize: 45}}>TODO!</Header>
+      <Header style={{fontSize: 45}}>TODOLIST</Header>
     </MainContainer>
   )
 }
@@ -14,5 +14,5 @@ export default TodosList
 
 const MainContainer = styled.div({
   textAlign: 'center',
-  marginTop: 20,
+  marginTop: 10,
 })

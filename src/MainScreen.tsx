@@ -10,18 +10,42 @@ import Clock from './components/presentational/Clock'
 const MainScreen = () => {
   return (
     <Container
-      style={{width: 600, justifyContent: 'center', justifySelf: 'center'}}
+      style={{marginTop: 30, display: 'flex', justifyContent: 'center'}}
     >
-      <Segment
-        style={{marginTop: 30}}
+      <Container
+        style={{width: 330, marginRight: 30}}
       >
-        <Title/>
-        <Clock/>
-        <TodoMessage/>
-        <TodoInput/>
-        <TodoButtons/>
-        <TodoItemList/>
-      </Segment>
+        <Segment
+          style={{width: 300, height: 350}}
+        >
+          <Clock/>
+        </Segment>
+      </Container>
+      <Container
+        style={{width: 540}}
+      >
+        <Segment
+          style={{width: 500}}
+        >
+          <Title/>
+          <TodoMessage/>
+          <TodoInput/>
+          <TodoButtons/>
+          <TodoItemList/>
+        </Segment>
+      </Container>
+      <Container
+        style={{width: 300}}
+      >
+        <Segment
+          style={{width: 300, height: 90}}
+        >
+        </Segment>
+        <Segment
+          style={{width: 300, height: 230}}
+        >
+        </Segment>
+      </Container>
     </Container>
   )
 }

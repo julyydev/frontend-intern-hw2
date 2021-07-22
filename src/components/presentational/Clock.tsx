@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import moment from 'moment'
-import {Header} from 'semantic-ui-react'
+import {Header, Container} from 'semantic-ui-react'
 import styled from '@emotion/styled'
 
 const TodoClock = () => {
@@ -17,7 +17,7 @@ const TodoClock = () => {
 
   return (
     <MainContainer>
-      <Header style={{marginTop: 10, marginBottom: -20, fontSize: 17}}>{time.format('YYYY년 MM월 DD일 ddd')}</Header>
+      <Header style={{marginBottom: -20, fontSize: 17}}>{time.format('YYYY년 MM월 DD일 ddd')}</Header>
       <Header style={{marginBottom: 10, fontSize: 29}}>{time.format('hh:mm:ss A')}</Header>
     </MainContainer>
   )
@@ -25,6 +25,7 @@ const TodoClock = () => {
 
 export default TodoClock
 
-const MainContainer = styled.div({
+const MainContainer = styled(Container)({
   textAlign: 'center',
+  marginTop: 10,
 })

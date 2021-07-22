@@ -16,7 +16,7 @@ const TodoMessage = () => {
     else {
       return (
         <RestContainer>
-          {restWorkCount ? `끝내지 못한 일의 개수: ${restWorkCount}개` : '할 일을 모두 끝내셨습니다!'}
+          {restWorkCount ? `끝내지 못한 일의 개수: ${restWorkCount}/${todoList.length}개` : '할 일을 모두 끝내셨습니다!'}
         </RestContainer>
       )
     }
@@ -39,6 +39,6 @@ const RestContainer = styled.div ({
   display: 'flex',
   justifyContent: 'center',
   marginBottom: 15,
-  fontSize: 17,
+  fontSize: 18,
   fontWeight: 'bold',
 })
