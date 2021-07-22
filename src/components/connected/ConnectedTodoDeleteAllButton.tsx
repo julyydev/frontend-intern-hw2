@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react'
 import {useDispatch} from 'react-redux'
-import TodoDeleteAllButton from '../presentational/TodoDeleteAllButton'
+import TodoDeleteAllButton from '../presentational/items/TodoDeleteAllButton'
 import {todoSlice} from '../../features/ducks/TodoDucks'
 import {searchSlice} from '../../features/ducks/SearchDucks'
 

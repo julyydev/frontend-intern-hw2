@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useCallback} from 'react'
 import {useDispatch} from 'react-redux'
-import SearchInput from '../presentational/SearchInput'
+import SearchInput from '../presentational/search/SearchInput'
 import {searchSlice} from '../../features/ducks/SearchDucks'
 
 interface Props {

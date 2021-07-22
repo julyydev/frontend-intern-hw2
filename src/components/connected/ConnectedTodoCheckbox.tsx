@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react'
 import {useDispatch} from 'react-redux'
-import TodoCheckbox from '../presentational/TodoCheckbox'
+import TodoCheckbox from '../presentational/items/TodoCheckbox'
 import {Todo, todoSlice} from '../../features/ducks/TodoDucks'
 
 interface Props {
