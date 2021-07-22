@@ -1,11 +1,12 @@
 import React from 'react'
-import {Container, Segment} from 'semantic-ui-react'
+import {Container, Divider, Segment} from 'semantic-ui-react'
 import Title from './components/presentational/Title'
 import TodoInput from './components/presentational/TodoInput'
 import TodoButtons from './components/presentational/TodoButtons'
 import TodoItemList from './components/presentational/TodoItemList'
 import TodoMessage from './components/presentational/TodoMessage'
 import Clock from './components/presentational/Clock'
+import Weather from './components/presentational/Weather'
 import TodoSearch from './components/presentational/TodoSearch'
 import {useSelector} from 'react-redux'
 import {RootState} from './root/RootReducer'
@@ -37,16 +38,18 @@ const MainScreen = () => {
         style={{width: 330, marginRight: 30}}
       >
         <Segment
-          style={{width: 300, height: 300}}
+          style={{width: 300, height: 290}}
         >
           <Clock/>
+          <Divider/>
+          <Weather/>
         </Segment>
       </Container>
       <Container
-        style={{width: 540}}
+        style={{width: 520}}
       >
         <Segment
-          style={{width: 500}}
+          style={{width: 490}}
         >
           <Title/>
           <TodoMessage/>
@@ -56,7 +59,7 @@ const MainScreen = () => {
         </Segment>
       </Container>
       <Container
-        style={{width: 300}}
+        style={{width: 280}}
       >
         {handleView()}
       </Container>
@@ -65,3 +68,4 @@ const MainScreen = () => {
 }
 
 export default MainScreen
+
