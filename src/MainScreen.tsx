@@ -58,10 +58,6 @@ const MainScreen = () => {
       <Container
         style={{width: 300}}
       >
-        <Segment
-          style={{width: 320, height: 90}}
-        >
-        </Segment>
         {handleView()}
       </Container>
     </Container>
