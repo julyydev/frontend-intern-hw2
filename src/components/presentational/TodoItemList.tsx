@@ -1,5 +1,5 @@
 import React from 'react'
-import TodoItem from './TodoItem'
+import TodoItem from './items/TodoItem'
 import styled from '@emotion/styled'
 import {useSelector} from 'react-redux'
 import {Todo} from '../../features/ducks/TodoDucks'
@@ -29,7 +29,8 @@ const TodoItemList = () => {
   const handleView = () => {
     if (tempList.length === 0 && todoList.length !== 0) {
       return (
-        <Container style={{justifyContent: 'center', width: 270}}
+        <Container
+          style={{justifyContent: 'center', width: 270}}
         >
           <Divider/>
           <TextContainer>
@@ -37,12 +38,12 @@ const TodoItemList = () => {
           </TextContainer>
         </Container>
       )
-    }
-    else {
+    } else {
       return (
         <div>
           {tempList.map((item: Todo) => (
-            <Container key={item.id} style={{justifyContent: 'center', width: 270}}
+            <Container
+              key={item.id} style={{justifyContent: 'center', width: 270}}
             >
               <Divider
               />

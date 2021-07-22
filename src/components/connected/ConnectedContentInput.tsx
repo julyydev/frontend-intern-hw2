@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useCallback} from 'react'
-import ContentInput from '../presentational/ContentInput'
+import ContentInput from '../presentational/input/ContentInput'
 import useAddContent from '../../hooks/useAddContent'
 
 interface Props {

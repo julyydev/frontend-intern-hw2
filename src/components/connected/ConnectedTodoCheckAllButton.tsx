@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import TodoCheckAllButton from '../presentational/TodoCheckAllButton'
+import TodoCheckAllButton from '../presentational/items/TodoCheckAllButton'
 import {Todo, todoSlice} from '../../features/ducks/TodoDucks'
 import {selectRestWorkList, selectFinishWorkList} from '../../features/selector/TodoSelector'
 import {RootState} from '../../root/RootReducer'
@@ -16,8 +16,7 @@ const ConnectedTodoCheckAllButton = () => {
       restWork.map((item: Todo) => {
         dispatch(todoSlice.actions.toggle(item))
       })
-    }
-    else {
+    } else {
       finishWork.map((item: Todo) => {
         dispatch(todoSlice.actions.toggle(item))
       })

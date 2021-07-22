@@ -2,7 +2,7 @@ import React, {useCallback} from 'react'
 import {Button} from 'semantic-ui-react'
 import styled from '@emotion/styled'
 import {useSelector} from 'react-redux'
-import {RootState} from '../../root/RootReducer'
+import {RootState} from '../../../root/RootReducer'
 
 interface Props {
   onClickAll: ReturnType<typeof useCallback>

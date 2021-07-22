@@ -1,7 +1,7 @@
 import {useDispatch} from 'react-redux'
 import React, {useCallback} from 'react'
 import {Todo, todoSlice} from '../../features/ducks/TodoDucks'
-import ModalContentTextArea from '../presentational/ModalContentTextArea'
+import ModalContentTextArea from '../presentational/modal/ModalContentTextArea'
 
 interface Props {
   item: Todo,
@@ -28,8 +28,7 @@ const ConnectedModalContentTextArea = (props: Props) => {
         event.preventDefault()
         alert('빈 칸은 입력하실 수 없습니다.')
         return
-      }
-      else {
+      } else {
         setIsModalOpen(false)
       }
     }

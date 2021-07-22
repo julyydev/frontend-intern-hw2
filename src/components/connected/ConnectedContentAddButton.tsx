@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react'
-import ContentAddButton from '../presentational/ContentAddButton'
+import ContentAddButton from '../presentational/input/ContentAddButton'
 import useAddContent from '../../hooks/useAddContent'
 
 interface Props {

@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react'
-import SearchFilter from '../presentational/SearchFilter'
+import SearchFilter from '../presentational/search/SearchFilter'
 import {useDispatch} from 'react-redux'
 import {searchSlice} from '../../features/ducks/SearchDucks'
 
@@ -18,7 +18,7 @@ const ConnectedSearchFilter = () => {
     dispatch(searchSlice.actions.changeIndex(2))
   }, [dispatch])
 
-  return  (
+  return (
     <SearchFilter
       onClickAll={handleAllButtonClick}
       onClickCheck={handleCheckButtonClick}

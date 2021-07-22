@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styled from '@emotion/styled'
-import ConnectedContentInput from '../connected/ConnectedContentInput'
-import ConnectedContentAddButton from '../connected/ConnectedContentAddButton'
+import ConnectedContentInput from '../../connected/ConnectedContentInput'
+import ConnectedContentAddButton from '../../connected/ConnectedContentAddButton'
 
 const TodoInput = () => {
   const [input, setInput] = useState('')

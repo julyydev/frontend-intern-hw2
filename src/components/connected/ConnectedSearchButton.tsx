@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react'
-import SearchButton from '../presentational/SearchButton'
+import SearchButton from '../presentational/search/SearchButton'
 import {useDispatch} from 'react-redux'
 import {searchSlice} from '../../features/ducks/SearchDucks'
 

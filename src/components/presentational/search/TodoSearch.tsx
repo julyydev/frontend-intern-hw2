@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-import ConnectedSearchInput from '../connected/ConnectedSearchInput'
-import ConnectedSearchButton from '../connected/ConnectedSearchButton'
+import ConnectedSearchInput from '../../connected/ConnectedSearchInput'
+import ConnectedSearchButton from '../../connected/ConnectedSearchButton'
 import styled from '@emotion/styled'
-import ConnectedSearchFilter from '../connected/ConnectedSearchFilter'
+import ConnectedSearchFilter from '../../connected/ConnectedSearchFilter'
 import {Grid} from 'semantic-ui-react'
 import {useSelector} from 'react-redux'
-import {RootState} from '../../root/RootReducer'
+import {RootState} from '../../../root/RootReducer'
 
 const TodoSearch = () => {
   const [input, setInput] = useState('')

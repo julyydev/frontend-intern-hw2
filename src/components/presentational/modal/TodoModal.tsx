@@ -1,9 +1,9 @@
-import ConnectedModalContentTextArea from '../connected/ConnectedModalContentTextArea'
-import ConnectedModalMemoTextArea from '../connected/ConnectedModalMemoTextArea'
+import ConnectedModalContentTextArea from '../../connected/ConnectedModalContentTextArea'
+import ConnectedModalMemoTextArea from '../../connected/ConnectedModalMemoTextArea'
 import {Grid, Modal, Icon} from 'semantic-ui-react'
 import React, {useState} from 'react'
 import styled from '@emotion/styled'
-import {Todo} from '../../features/ducks/TodoDucks'
+import {Todo} from '../../../features/ducks/TodoDucks'
 
 interface Props {
   item: Todo

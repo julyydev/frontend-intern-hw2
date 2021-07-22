@@ -1,7 +1,7 @@
 import {useDispatch} from 'react-redux'
 import React, {useCallback} from 'react'
 import {Todo, todoSlice} from '../../features/ducks/TodoDucks'
-import ModalMemoTextArea from '../presentational/ModalMemoTextArea'
+import ModalMemoTextArea from '../presentational/modal/ModalMemoTextArea'
 
 interface Props {
   item: Todo

@@ -9,7 +9,7 @@ const Weather = () => {
   const [temperature, setTemperature] = useState('')
   const [humidity, setHumidity] = useState('')
 
-  const handleView= () => {
+  const handleView = () => {
     switch (weather) {
     case 'Clear':
       return (

@@ -26,7 +26,7 @@ const TodoDeleteAllButton = (props: Props) => {
         DELETE ALL
       </StyledButton>
       <Confirm
-        open = {isConfirmOpen}
+        open={isConfirmOpen}
         content='정말 목록을 모두 지우시겠습니까?'
         cancelButton='아니오'
         confirmButton='네'
