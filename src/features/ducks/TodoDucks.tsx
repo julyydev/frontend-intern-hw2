@@ -1,10 +1,10 @@
 import {createSlice, createEntityAdapter, EntityState} from '@reduxjs/toolkit'
 
 export interface Todo {
-  id: number,
-  content: string,
-  check: boolean,
-  memo: string,
+  id: number
+  content: string
+  check: boolean
+  memo: string
 }
 
 export interface TodoList {
@@ -29,7 +29,7 @@ export const todoSlice = createSlice({
         id: idIndex++,
         content: content,
         check: false,
-        memo: ''
+        memo: '',
       }
       todoAdapter.addOne(state.list, newTodo)
     },

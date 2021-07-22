@@ -6,8 +6,29 @@ import TodoButtons from './components/presentational/TodoButtons'
 import TodoItemList from './components/presentational/TodoItemList'
 import TodoMessage from './components/presentational/TodoMessage'
 import Clock from './components/presentational/Clock'
+import TodoSearch from './components/presentational/TodoSearch'
+import {useSelector} from 'react-redux'
+import {RootState} from './root/RootReducer'
+import {Todo} from './features/ducks/TodoDucks'
+import {selectTodoList} from './features/selector/TodoSelector'
 
 const MainScreen = () => {
+  const todoList = useSelector<RootState, Todo[]>(state => selectTodoList(state.todo))
+  const handleView = () => {
+    if (todoList.length === 0) {
+      return <div/>
+    }
+    else {
+      return (
+        <Segment
+          style={{width: 320, height: 190}}
+        >
+          <TodoSearch/>
+        </Segment>
+      )
+    }
+  }
+
   return (
     <Container
       style={{marginTop: 30, display: 'flex', justifyContent: 'center'}}
@@ -16,7 +37,7 @@ const MainScreen = () => {
         style={{width: 330, marginRight: 30}}
       >
         <Segment
-          style={{width: 300, height: 350}}
+          style={{width: 300, height: 300}}
         >
           <Clock/>
         </Segment>
@@ -38,13 +59,10 @@ const MainScreen = () => {
         style={{width: 300}}
       >
         <Segment
-          style={{width: 300, height: 90}}
+          style={{width: 320, height: 90}}
         >
         </Segment>
-        <Segment
-          style={{width: 300, height: 230}}
-        >
-        </Segment>
+        {handleView()}
       </Container>
     </Container>
   )
