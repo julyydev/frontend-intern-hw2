@@ -3,16 +3,18 @@
 </h1>
 
 # How to Build
+
 1. 현재 repository를 local에 clone.
 2. 터미널을 실행하고, repository directory로 이동.
 3. 터미널에서 다음 명령어 실행.
-```
-$ yarn build
-$ yarn start
-```
 
+   ```
+   $ yarn install
+   $ yarn start
+   ```
 
 # 기능
+
 1. 처음 실행 시 날짜, 시간, 날씨 정보를 확인 할 수 있고 'TODOLIST' 타이틀과 함께 입력창이 있음.
 2. 입력창에 할 일을 입력하고 'ADD' 버튼이나 'Enter' 키 입력 시 할 일이 추가됨.
 3. 할 일을 한 개 이상 입력하면 'CHECK ALL' 버튼과 'DELETE ALL' 버튼, 검색 segment가 보여짐.
