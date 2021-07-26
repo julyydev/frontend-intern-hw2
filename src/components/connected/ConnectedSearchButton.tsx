@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react'
 import SearchButton from '../presentational/search/SearchButton'
 import {useDispatch} from 'react-redux'
-import {searchSlice} from '../../features/ducks/SearchDucks'
+import {searchActions} from '../../features/ducks/SearchDucks'
 
 interface Props {
   input: string,
@@ -13,8 +13,8 @@ const ConnectedSearchButton = (props: Props) => {
   const dispatch = useDispatch()
 
   const handleAddButtonClick = useCallback(() => {
-    dispatch(searchSlice.actions.updateSearchString(input))
-    dispatch(searchSlice.actions.changeIndex(3))
+    dispatch(searchActions.updateSearchString(input))
+    dispatch(searchActions.changeIndex(3))
     setInput('')
   }, [dispatch, input])
 

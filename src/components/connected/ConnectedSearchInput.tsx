@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useCallback} from 'react'
 import {useDispatch} from 'react-redux'
 import SearchInput from '../presentational/search/SearchInput'
-import {searchSlice} from '../../features/ducks/SearchDucks'
+import {searchActions} from '../../features/ducks/SearchDucks'
 
 interface Props {
   input: string
@@ -18,8 +18,8 @@ const ConnectedSearchInput = (props: Props) => {
 
   const handleEnterKeyDown = useCallback((event) => {
     if (event.keyCode === 13) {
-      dispatch(searchSlice.actions.updateSearchString(input))
-      dispatch(searchSlice.actions.changeIndex(3))
+      dispatch(searchActions.updateSearchString(input))
+      dispatch(searchActions.changeIndex(3))
       setInput('')
     }
   }, [dispatch, input])
