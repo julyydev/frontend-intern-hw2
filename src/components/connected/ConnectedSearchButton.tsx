@@ -13,7 +13,12 @@ const ConnectedSearchButton = (props: Props) => {
   const dispatch = useDispatch()
 
   const handleAddButtonClick = useCallback(() => {
-    dispatch(searchActions.updateKeyword(input))
+    const trimmed = input.trim()
+    if (trimmed.length === 0) {
+      dispatch(searchActions.clearKeyword())
+    } else {
+      dispatch(searchActions.updateKeyword(input))
+    }
     setInput('')
   }, [dispatch, input])
 

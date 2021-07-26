@@ -21,6 +21,9 @@ const searchSlice = createSlice({
     updateKeyword: (state, action: PayloadAction<string>) => {
       state.filterOption = undefined
       state.keyword = action.payload
+    },
+    clearKeyword: () => {
+      return initialState
     }
   }
 })

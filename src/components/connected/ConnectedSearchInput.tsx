@@ -17,10 +17,17 @@ const ConnectedSearchInput = (props: Props) => {
   }, [input])
 
   const handleEnterKeyDown = useCallback((event) => {
-    if (event.keyCode === 13) {
-      dispatch(searchActions.updateKeyword(input))
-      setInput('')
+    if (event.keyword !== 13) {
+      return
     }
+
+    const trimmed = input.trim()
+    if (trimmed.length === 0) {
+      dispatch(searchActions.clearKeyword())
+    } else {
+      dispatch(searchActions.updateKeyword(input))
+    }
+    setInput('')
   }, [dispatch, input])
 
   return (
