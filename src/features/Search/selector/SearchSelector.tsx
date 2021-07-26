@@ -8,12 +8,12 @@ const filterOption = createSelector(
   (state) => state.filterOption,
 )
 
-const searchString = createSelector(
+const keyword = createSelector(
   searchState,
-  (state) => state.searchString,
+  (state) => state.keyword,
 )
 
 export const searchSelector = {
   filterOption,
-  searchString,
+  keyword,
 }

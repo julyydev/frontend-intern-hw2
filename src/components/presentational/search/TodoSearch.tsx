@@ -11,7 +11,7 @@ const TodoSearch = () => {
   const [input, setInput] = useState('')
 
   const filterOption = useSelector(searchSelector.filterOption)
-  const searchString = useSelector(searchSelector.searchString)
+  const keyword = useSelector(searchSelector.keyword)
 
   return (
     <MainContainer>
@@ -37,7 +37,7 @@ const TodoSearch = () => {
             style={{flex: 1, marginLeft: 6}}
           >
             <TextContainer style={{fontSize: 15}}>{filterOption === undefined ? '-Keyword-' : ''}</TextContainer>
-            <TextContainer>{filterOption === undefined ? searchString : ''}</TextContainer>
+            <TextContainer>{filterOption === undefined ? keyword : ''}</TextContainer>
           </Grid.Column>
           <Grid.Column
             style={{flex: 1, width: 173}}

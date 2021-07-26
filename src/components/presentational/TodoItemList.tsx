@@ -14,10 +14,10 @@ const TodoItemList = () => {
   const finishWorkList = useSelector(todoSelector.finishWorkList)
 
   const filterOption = useSelector(searchSelector.filterOption)
-  const searchString = useSelector(searchSelector.searchString)
+  const keyword = useSelector(searchSelector.keyword)
 
   const searchList = todoList.filter((item: Todo) => {
-    return item.content.indexOf(searchString) > -1
+    return keyword !== undefined && item.content.indexOf(keyword) > -1
   })
 
   const tempList = (() => {

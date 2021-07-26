@@ -3,12 +3,11 @@ import {TodoFilterOption} from '../model/TodoFilterOption'
 
 export interface Search {
   filterOption?: TodoFilterOption
-  searchString: string
+  keyword?: string
 }
 
 const initialState: Search = {
   filterOption: TodoFilterOption.all,
-  searchString: ''
 }
 
 const searchSlice = createSlice({
@@ -18,8 +17,8 @@ const searchSlice = createSlice({
     changeFilterOption: (state, action: PayloadAction<TodoFilterOption>) => {
       state.filterOption = action.payload
     },
-    updateSearchString: (state, action: PayloadAction<string>) => {
-      state.searchString = action.payload
+    updateKeyword: (state, action: PayloadAction<string>) => {
+      state.keyword = action.payload
       state.filterOption = undefined
     }
   }
