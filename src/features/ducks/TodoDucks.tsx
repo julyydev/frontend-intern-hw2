@@ -20,7 +20,7 @@ const initialState: TodoList = {
 }
 
 let idIndex = 1
-export const todoSlice = createSlice({
+const todoSlice = createSlice({
   name: 'todoItem',
   initialState,
   reducers: {
@@ -67,3 +67,4 @@ export const todoSlice = createSlice({
 })
 
 export const todoActions = todoSlice.actions
+export const todoReducer = todoSlice.reducer
