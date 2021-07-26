@@ -1,7 +1,8 @@
 import {createSlice, createEntityAdapter, EntityState} from '@reduxjs/toolkit'
+import { v4 as uuidv4 } from 'uuid'
 
 export interface Todo {
-  id: number
+  id: string
   content: string
   check: boolean
   memo: string
@@ -19,14 +20,13 @@ const initialState: TodoList = {
   list: todoAdapter.getInitialState(),
 }
 
-let idIndex = 1
 const todoSlice = createSlice({
   name: 'todoItem',
   initialState,
   reducers: {
     add(state, {payload: {content}}) {
       const newTodo = {
-        id: idIndex++,
+        id: uuidv4(),
         content: content,
         check: false,
         memo: '',
