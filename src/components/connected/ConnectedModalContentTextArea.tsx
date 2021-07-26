@@ -23,7 +23,7 @@ const ConnectedModalContentTextArea = (props: Props) => {
   }, [dispatch, item])
 
   const handleEnterKeyDown = useCallback((event) => {
-    if (event.keyCode === 13) {
+    if (event.key === 'Enter') {
       if (!item.content.trim()) {
         event.preventDefault()
         alert('빈 칸은 입력하실 수 없습니다.')

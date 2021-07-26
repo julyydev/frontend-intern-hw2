@@ -17,7 +17,7 @@ const ConnectedSearchInput = (props: Props) => {
   }, [input])
 
   const handleEnterKeyDown = useCallback((event) => {
-    if (event.keyword !== 13) {
+    if (event.key !== 'Enter') {
       return
     }
 

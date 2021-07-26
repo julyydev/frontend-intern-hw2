@@ -16,7 +16,7 @@ const ConnectedContentInput = (props: Props) => {
   }, [input])
 
   const handleEnterKeyDown = useCallback((event) => {
-    if (event.keyCode === 13) {
+    if (event.key === 'Enter') {
       addContent()
     }
   }, [addContent])
