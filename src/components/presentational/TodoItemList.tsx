@@ -3,16 +3,18 @@ import TodoItem from './items/TodoItem'
 import styled from '@emotion/styled'
 import {useSelector} from 'react-redux'
 import {Todo} from '../../features/ducks/TodoDucks'
-import {RootState} from '../../root/RootReducer'
 import {todoSelector} from '../../features/selector/TodoSelector'
 import {Container, Divider} from 'semantic-ui-react'
+import {searchSelector} from '../../features/selector/SearchSelector'
 
 const TodoItemList = () => {
   const todoList = useSelector(todoSelector.todoList)
   const restWorkList = useSelector(todoSelector.restWorkList)
   const finishWorkList = useSelector(todoSelector.finishWorkList)
 
-  const {listIndex, searchString} = useSelector((state: RootState) => state.search)
+  const listIndex = useSelector(searchSelector.listIndex)
+  const searchString = useSelector(searchSelector.searchString)
+
   const searchList = todoList.filter((item: Todo) => {
     return item.content.indexOf(searchString) > -1
   })

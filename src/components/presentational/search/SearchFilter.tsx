@@ -2,7 +2,7 @@ import React, {useCallback} from 'react'
 import {Button} from 'semantic-ui-react'
 import styled from '@emotion/styled'
 import {useSelector} from 'react-redux'
-import {RootState} from '../../../root/RootReducer'
+import {searchSelector} from '../../../features/selector/SearchSelector'
 
 interface Props {
   onClickAll: ReturnType<typeof useCallback>
@@ -13,7 +13,7 @@ interface Props {
 const SearchFilter = (props: Props) => {
   const {onClickAll, onClickCheck, onClickUncheck} = props
 
-  const {listIndex} = useSelector((state: RootState) => state.search)
+  const listIndex = useSelector(searchSelector.listIndex)
 
   return (
     <div
