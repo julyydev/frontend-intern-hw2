@@ -1,6 +1,6 @@
 import {useCallback} from 'react'
 import {useDispatch} from 'react-redux'
-import {todoSlice} from '../features/ducks/TodoDucks'
+import {todoActions} from '../features/ducks/TodoDucks'
 
 const useAddContent = (input: string, setInput: (content: string) => void) => {
   const dispatch = useDispatch()
@@ -10,7 +10,7 @@ const useAddContent = (input: string, setInput: (content: string) => void) => {
       alert('할 일을 입력하지 않았습니다!')
       return
     } else {
-      dispatch(todoSlice.actions.add({
+      dispatch(todoActions.add({
         content: input,
       }))
       setInput('')

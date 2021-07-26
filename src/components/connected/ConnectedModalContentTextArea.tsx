@@ -1,6 +1,6 @@
 import {useDispatch} from 'react-redux'
 import React, {useCallback} from 'react'
-import {Todo, todoSlice} from '../../features/ducks/TodoDucks'
+import {Todo, todoActions} from '../../features/ducks/TodoDucks'
 import ModalContentTextArea from '../presentational/modal/ModalContentTextArea'
 
 interface Props {
@@ -19,7 +19,7 @@ const ConnectedModalContentTextArea = (props: Props) => {
       check: item.check,
       memo: item.memo,
     }
-    dispatch(todoSlice.actions.changeContent(newTodo))
+    dispatch(todoActions.changeContent(newTodo))
   }, [dispatch, item])
 
   const handleEnterKeyDown = useCallback((event) => {

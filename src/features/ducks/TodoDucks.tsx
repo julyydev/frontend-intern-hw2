@@ -65,3 +65,5 @@ export const todoSlice = createSlice({
     },
   },
 })
+
+export const todoActions = todoSlice.actions

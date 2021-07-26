@@ -1,6 +1,6 @@
 import {useDispatch} from 'react-redux'
 import React, {useCallback} from 'react'
-import {Todo, todoSlice} from '../../features/ducks/TodoDucks'
+import {Todo, todoActions} from '../../features/ducks/TodoDucks'
 import ModalMemoTextArea from '../presentational/modal/ModalMemoTextArea'
 
 interface Props {
@@ -19,7 +19,7 @@ const ConnectedModalMemoTextArea = (props: Props) => {
       check: item.check,
       memo: newMemo,
     }
-    dispatch(todoSlice.actions.memo(newTodo))
+    dispatch(todoActions.memo(newTodo))
   }, [dispatch, item])
 
   return (
