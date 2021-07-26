@@ -1,19 +1,28 @@
-import {EntityState, createSelector} from '@reduxjs/toolkit'
-import {todoAdapter, Todo, TodoList} from '../ducks/TodoDucks'
+import {createSelector} from '@reduxjs/toolkit'
+import { RootState } from '../../root/RootReducer'
+import {todoAdapter} from '../ducks/TodoDucks'
 
 const {selectAll} = todoAdapter.getSelectors()
 
-export const selectTodoList = createSelector(
-  (state: TodoList) => state.list,
-  (list: EntityState<Todo>) => selectAll(list),
+const todoState = (state: RootState) => state.todo
+
+const todoList = createSelector(
+  todoState,
+  ({list}) => selectAll(list),
 )
 
-export const selectRestWorkList = createSelector(
-  (state: TodoList) => state.list,
-  (list: EntityState<Todo>) => selectAll(list).filter((item) => !item.check)
+const restWorkList = createSelector(
+  todoState,
+  ({list}) => selectAll(list).filter((item) => !item.check)
 )
 
-export const selectFinishWorkList = createSelector(
-  (state: TodoList) => state.list,
-  (list: EntityState<Todo>) => selectAll(list).filter((item) => item.check)
+const finishWorkList = createSelector(
+  todoState,
+  ({list}) => selectAll(list).filter((item) => item.check)
 )
+
+export const todoSelector = {
+  todoList,
+  restWorkList,
+  finishWorkList,
+}

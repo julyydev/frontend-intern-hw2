@@ -4,13 +4,13 @@ import styled from '@emotion/styled'
 import {useSelector} from 'react-redux'
 import {Todo} from '../../features/ducks/TodoDucks'
 import {RootState} from '../../root/RootReducer'
-import {selectTodoList, selectRestWorkList, selectFinishWorkList} from '../../features/selector/TodoSelector'
+import {todoSelector} from '../../features/selector/TodoSelector'
 import {Container, Divider} from 'semantic-ui-react'
 
 const TodoItemList = () => {
-  const todoList = useSelector<RootState, Todo[]>(state => selectTodoList(state.todo))
-  const restWorkList = useSelector<RootState, Todo[]>(state => selectRestWorkList(state.todo))
-  const finishWorkList = useSelector<RootState, Todo[]>(state => selectFinishWorkList(state.todo))
+  const todoList = useSelector(todoSelector.todoList)
+  const restWorkList = useSelector(todoSelector.restWorkList)
+  const finishWorkList = useSelector(todoSelector.finishWorkList)
 
   const {listIndex, searchString} = useSelector((state: RootState) => state.search)
   const searchList = todoList.filter((item: Todo) => {

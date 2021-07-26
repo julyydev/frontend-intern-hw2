@@ -2,14 +2,13 @@ import React, {useCallback} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import TodoCheckAllButton from '../presentational/items/TodoCheckAllButton'
 import {Todo, todoSlice} from '../../features/ducks/TodoDucks'
-import {selectRestWorkList, selectFinishWorkList} from '../../features/selector/TodoSelector'
-import {RootState} from '../../root/RootReducer'
+import {todoSelector} from '../../features/selector/TodoSelector'
 
 const ConnectedTodoCheckAllButton = () => {
   const dispatch = useDispatch()
 
-  const restWork = useSelector<RootState, Todo[]>(state => selectRestWorkList(state.todo))
-  const finishWork = useSelector<RootState, Todo[]>(state => selectFinishWorkList(state.todo))
+  const restWork = useSelector(todoSelector.restWorkList)
+  const finishWork = useSelector(todoSelector.finishWorkList)
 
   const handleCheckAllButtonClick = useCallback(() => {
     if (restWork.length) {

@@ -1,13 +1,11 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
-import {RootState} from '../../root/RootReducer'
-import {Todo} from '../../features/ducks/TodoDucks'
 import styled from '@emotion/styled'
-import {selectTodoList, selectRestWorkList} from '../../features/selector/TodoSelector'
+import {todoSelector} from '../../features/selector/TodoSelector'
 
 const TodoMessage = () => {
-  const todoList = useSelector<RootState, Todo[]>(state => selectTodoList(state.todo))
-  const restWorkCount = useSelector<RootState, Todo[]>(state => selectRestWorkList(state.todo)).length
+  const todoList = useSelector(todoSelector.todoList)
+  const restWorkCount = useSelector(todoSelector.restWorkList).length
 
   const handleMessage = () => {
     if (todoList.length === 0) {

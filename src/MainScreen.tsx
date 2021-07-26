@@ -9,12 +9,10 @@ import Clock from './components/presentational/information/Clock'
 import Weather from './components/presentational/information/Weather'
 import TodoSearch from './components/presentational/search/TodoSearch'
 import {useSelector} from 'react-redux'
-import {RootState} from './root/RootReducer'
-import {Todo} from './features/ducks/TodoDucks'
-import {selectTodoList} from './features/selector/TodoSelector'
+import {todoSelector} from './features/selector/TodoSelector'
 
 const MainScreen = () => {
-  const todoList = useSelector<RootState, Todo[]>(state => selectTodoList(state.todo))
+  const todoList = useSelector(todoSelector.todoList)
   const handleView = () => {
     if (todoList.length === 0) {
       return <div/>
