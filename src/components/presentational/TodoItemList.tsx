@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 import TodoItem from './items/TodoItem'
 import styled from '@emotion/styled'
 import {useSelector} from 'react-redux'
@@ -6,27 +6,32 @@ import {Todo} from '../../features/Todo/ducks/TodoDucks'
 import {todoSelector} from '../../features/Todo/selector/TodoSelector'
 import {Container, Divider} from 'semantic-ui-react'
 import {searchSelector} from '../../features/Search/selector/SearchSelector'
+import {TodoFilterOption} from '../../features/Search/model/TodoFilterOption'
 
 const TodoItemList = () => {
   const todoList = useSelector(todoSelector.todoList)
   const restWorkList = useSelector(todoSelector.restWorkList)
   const finishWorkList = useSelector(todoSelector.finishWorkList)
 
-  const listIndex = useSelector(searchSelector.listIndex)
+  const filterOption = useSelector(searchSelector.filterOption)
   const searchString = useSelector(searchSelector.searchString)
 
   const searchList = todoList.filter((item: Todo) => {
     return item.content.indexOf(searchString) > -1
   })
 
-  const ListArray = [
-    todoList,
-    finishWorkList,
-    restWorkList,
-    searchList,
-  ]
-
-  const tempList = ListArray[listIndex]
+  const tempList = (() => {
+    switch (filterOption) {
+    case TodoFilterOption.all:
+      return todoList
+    case TodoFilterOption.checked:
+      return finishWorkList
+    case TodoFilterOption.unchecked:
+      return restWorkList
+    default:
+      return searchList
+    }
+  })()
 
   const handleView = () => {
     if (tempList.length === 0 && todoList.length !== 0) {
@@ -69,7 +74,7 @@ export default TodoItemList
 const MainContainer = styled(Container)({
   justifyContent: 'center',
   display: 'flex',
-  marginBottom: 30,
+  marginBottom: 30
 })
 
 const TextContainer = styled.div({
@@ -78,5 +83,5 @@ const TextContainer = styled.div({
   fontSize: 20,
   fontWeight: 'bold',
   justifyContent: 'center',
-  display: 'flex',
+  display: 'flex'
 })

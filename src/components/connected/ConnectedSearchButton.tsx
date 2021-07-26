@@ -14,7 +14,6 @@ const ConnectedSearchButton = (props: Props) => {
 
   const handleAddButtonClick = useCallback(() => {
     dispatch(searchActions.updateSearchString(input))
-    dispatch(searchActions.changeIndex(3))
     setInput('')
   }, [dispatch, input])
 

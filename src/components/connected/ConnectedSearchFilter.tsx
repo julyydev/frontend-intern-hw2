@@ -2,20 +2,21 @@ import React, {useCallback} from 'react'
 import SearchFilter from '../presentational/search/SearchFilter'
 import {useDispatch} from 'react-redux'
 import {searchActions} from '../../features/Search/ducks/SearchDucks'
+import {TodoFilterOption} from '../../features/Search/model/TodoFilterOption'
 
 const ConnectedSearchFilter = () => {
   const dispatch = useDispatch()
 
   const handleAllButtonClick = useCallback(() => {
-    dispatch(searchActions.changeIndex(0))
+    dispatch(searchActions.changeFilterOption(TodoFilterOption.all))
   }, [dispatch])
 
   const handleCheckButtonClick = useCallback(() => {
-    dispatch(searchActions.changeIndex(1))
+    dispatch(searchActions.changeFilterOption(TodoFilterOption.checked))
   }, [dispatch])
 
   const handleUncheckButtonClick = useCallback(() => {
-    dispatch(searchActions.changeIndex(2))
+    dispatch(searchActions.changeFilterOption(TodoFilterOption.unchecked))
   }, [dispatch])
 
   return (

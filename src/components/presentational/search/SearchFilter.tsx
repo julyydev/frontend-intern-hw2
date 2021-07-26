@@ -3,6 +3,7 @@ import {Button} from 'semantic-ui-react'
 import styled from '@emotion/styled'
 import {useSelector} from 'react-redux'
 import {searchSelector} from '../../../features/Search/selector/SearchSelector'
+import {TodoFilterOption} from '../../../features/Search/model/TodoFilterOption'
 
 interface Props {
   onClickAll: ReturnType<typeof useCallback>
@@ -13,7 +14,7 @@ interface Props {
 const SearchFilter = (props: Props) => {
   const {onClickAll, onClickCheck, onClickUncheck} = props
 
-  const listIndex = useSelector(searchSelector.listIndex)
+  const filterOption = useSelector(searchSelector.filterOption)
 
   return (
     <div
@@ -34,7 +35,7 @@ const SearchFilter = (props: Props) => {
           marginBottom: 10,
         }}
         onClick={onClickAll}
-        color={listIndex === 0 ? 'purple' : 'grey'}
+        color={filterOption === TodoFilterOption.all ? 'purple' : 'grey'}
       >
         SHOW ALL
       </StyledButton>
@@ -47,7 +48,7 @@ const SearchFilter = (props: Props) => {
           marginBottom: 10,
         }}
         onClick={onClickCheck}
-        color={listIndex === 1 ? 'purple' : 'grey'}
+        color={filterOption === TodoFilterOption.checked ? 'purple' : 'grey'}
       >
         CHECKED
       </StyledButton>
@@ -60,7 +61,7 @@ const SearchFilter = (props: Props) => {
           marginBottom: 10,
         }}
         onClick={onClickUncheck}
-        color={listIndex === 2 ? 'purple' : 'grey'}
+        color={filterOption === TodoFilterOption.unchecked ? 'purple' : 'grey'}
       >
         UNCHECKED
       </StyledButton>

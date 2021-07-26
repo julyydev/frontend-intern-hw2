@@ -3,9 +3,9 @@ import {createSelector} from '@reduxjs/toolkit'
 
 const searchState = (state: RootState) => state.search
 
-const listIndex = createSelector(
+const filterOption = createSelector(
   searchState,
-  (state) => state.listIndex,
+  (state) => state.filterOption,
 )
 
 const searchString = createSelector(
@@ -14,6 +14,6 @@ const searchString = createSelector(
 )
 
 export const searchSelector = {
-  listIndex,
+  filterOption,
   searchString,
 }

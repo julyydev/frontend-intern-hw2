@@ -1,25 +1,27 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {TodoFilterOption} from '../model/TodoFilterOption'
 
 export interface Search {
-  listIndex: number
+  filterOption?: TodoFilterOption
   searchString: string
 }
 
 const initialState: Search = {
-  listIndex: 0,
-  searchString: '',
+  filterOption: TodoFilterOption.all,
+  searchString: ''
 }
 
 const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    changeIndex: (state, action: PayloadAction<number>) => {
-      state.listIndex = action.payload
+    changeFilterOption: (state, action: PayloadAction<TodoFilterOption>) => {
+      state.filterOption = action.payload
     },
     updateSearchString: (state, action: PayloadAction<string>) => {
       state.searchString = action.payload
-    },
+      state.filterOption = undefined
+    }
   }
 })
 
