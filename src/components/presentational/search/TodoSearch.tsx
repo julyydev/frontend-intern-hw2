@@ -9,8 +9,6 @@ import {searchSelector} from '../../../features/Search/selector/SearchSelector'
 
 const TodoSearch = () => {
   const [input, setInput] = useState('')
-
-  const filterOption = useSelector(searchSelector.filterOption)
   const keyword = useSelector(searchSelector.keyword)
 
   return (
@@ -36,8 +34,12 @@ const TodoSearch = () => {
           <Grid.Column
             style={{flex: 1, marginLeft: 6}}
           >
-            <TextContainer style={{fontSize: 15}}>{filterOption === undefined ? '-Keyword-' : ''}</TextContainer>
-            <TextContainer>{filterOption === undefined ? keyword : ''}</TextContainer>
+            {keyword !== undefined &&
+            <>
+              <TextContainer style={{fontSize: 15}}>{'-Keyword-'}</TextContainer>
+              <TextContainer>{keyword}</TextContainer>
+            </>
+            }
           </Grid.Column>
           <Grid.Column
             style={{flex: 1, width: 173}}

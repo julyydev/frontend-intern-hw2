@@ -16,10 +16,11 @@ const searchSlice = createSlice({
   reducers: {
     changeFilterOption: (state, action: PayloadAction<TodoFilterOption>) => {
       state.filterOption = action.payload
+      state.keyword = undefined
     },
     updateKeyword: (state, action: PayloadAction<string>) => {
-      state.keyword = action.payload
       state.filterOption = undefined
+      state.keyword = action.payload
     }
   }
 })
