@@ -1,4 +1,4 @@
-import {RootState} from '../../root/RootReducer'
+import {RootState} from '../../../root/RootReducer'
 import {createSelector} from '@reduxjs/toolkit'
 
 const searchState = (state: RootState) => state.search

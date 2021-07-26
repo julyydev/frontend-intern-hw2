@@ -1,8 +1,8 @@
 import React, {useCallback} from 'react'
 import {useDispatch} from 'react-redux'
 import TodoDeleteAllButton from '../presentational/items/TodoDeleteAllButton'
-import {todoActions} from '../../features/ducks/TodoDucks'
-import {searchActions} from '../../features/ducks/SearchDucks'
+import {todoActions} from '../../features/Todo/ducks/TodoDucks'
+import {searchActions} from '../../features/Search/ducks/SearchDucks'
 
 const ConnectedTodoDeleteAllButton = () => {
   const dispatch = useDispatch()

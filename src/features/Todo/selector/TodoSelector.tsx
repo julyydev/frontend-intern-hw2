@@ -1,5 +1,5 @@
 import {createSelector} from '@reduxjs/toolkit'
-import { RootState } from '../../root/RootReducer'
+import { RootState } from '../../../root/RootReducer'
 import {todoAdapter} from '../ducks/TodoDucks'
 
 const {selectAll} = todoAdapter.getSelectors()

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
 import styled from '@emotion/styled'
-import {todoSelector} from '../../features/selector/TodoSelector'
+import {todoSelector} from '../../features/Todo/selector/TodoSelector'
 
 const TodoMessage = () => {
   const todoList = useSelector(todoSelector.todoList)

@@ -1,8 +1,8 @@
 import React, {useCallback} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import TodoCheckAllButton from '../presentational/items/TodoCheckAllButton'
-import {Todo, todoActions} from '../../features/ducks/TodoDucks'
-import {todoSelector} from '../../features/selector/TodoSelector'
+import {Todo, todoActions} from '../../features/Todo/ducks/TodoDucks'
+import {todoSelector} from '../../features/Todo/selector/TodoSelector'
 
 const ConnectedTodoCheckAllButton = () => {
   const dispatch = useDispatch()

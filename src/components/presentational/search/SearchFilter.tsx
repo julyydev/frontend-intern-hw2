@@ -2,7 +2,7 @@ import React, {useCallback} from 'react'
 import {Button} from 'semantic-ui-react'
 import styled from '@emotion/styled'
 import {useSelector} from 'react-redux'
-import {searchSelector} from '../../../features/selector/SearchSelector'
+import {searchSelector} from '../../../features/Search/selector/SearchSelector'
 
 interface Props {
   onClickAll: ReturnType<typeof useCallback>

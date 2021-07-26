@@ -2,10 +2,10 @@ import React from 'react'
 import TodoItem from './items/TodoItem'
 import styled from '@emotion/styled'
 import {useSelector} from 'react-redux'
-import {Todo} from '../../features/ducks/TodoDucks'
-import {todoSelector} from '../../features/selector/TodoSelector'
+import {Todo} from '../../features/Todo/ducks/TodoDucks'
+import {todoSelector} from '../../features/Todo/selector/TodoSelector'
 import {Container, Divider} from 'semantic-ui-react'
-import {searchSelector} from '../../features/selector/SearchSelector'
+import {searchSelector} from '../../features/Search/selector/SearchSelector'
 
 const TodoItemList = () => {
   const todoList = useSelector(todoSelector.todoList)

@@ -1,6 +1,6 @@
 import {combineReducers} from '@reduxjs/toolkit'
-import {todoReducer} from '../features/ducks/TodoDucks'
-import {searchReducer} from '../features/ducks/SearchDucks'
+import {todoReducer} from '../features/Todo/ducks/TodoDucks'
+import {searchReducer} from '../features/Search/ducks/SearchDucks'
 
 export const rootReducer = combineReducers({
   todo: todoReducer,

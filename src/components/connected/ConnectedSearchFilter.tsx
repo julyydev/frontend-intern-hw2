@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react'
 import SearchFilter from '../presentational/search/SearchFilter'
 import {useDispatch} from 'react-redux'
-import {searchActions} from '../../features/ducks/SearchDucks'
+import {searchActions} from '../../features/Search/ducks/SearchDucks'
 
 const ConnectedSearchFilter = () => {
   const dispatch = useDispatch()

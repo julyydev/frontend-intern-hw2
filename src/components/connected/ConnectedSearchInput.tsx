@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useCallback} from 'react'
 import {useDispatch} from 'react-redux'
 import SearchInput from '../presentational/search/SearchInput'
-import {searchActions} from '../../features/ducks/SearchDucks'
+import {searchActions} from '../../features/Search/ducks/SearchDucks'
 
 interface Props {
   input: string

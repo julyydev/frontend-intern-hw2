@@ -1,6 +1,6 @@
 import {useCallback} from 'react'
 import {useDispatch} from 'react-redux'
-import {todoActions} from '../features/ducks/TodoDucks'
+import {todoActions} from '../features/Todo/ducks/TodoDucks'
 
 const useAddContent = (input: string, setInput: (content: string) => void) => {
   const dispatch = useDispatch()

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import styled from '@emotion/styled'
-import {Todo} from '../../../features/ducks/TodoDucks'
+import {Todo} from '../../../features/Todo/ducks/TodoDucks'
 import ConnectedTodoDeleteButton from '../../connected/ConnectedTodoDeleteButton'
 import ConnectedTodoCheckbox from '../../connected/ConnectedTodoCheckbox'
 import TodoModal from '../modal/TodoModal'

@@ -3,7 +3,7 @@ import ConnectedModalMemoTextArea from '../../connected/ConnectedModalMemoTextAr
 import {Grid, Modal, Icon} from 'semantic-ui-react'
 import React, {useState} from 'react'
 import styled from '@emotion/styled'
-import {Todo} from '../../../features/ducks/TodoDucks'
+import {Todo} from '../../../features/Todo/ducks/TodoDucks'
 
 interface Props {
   item: Todo

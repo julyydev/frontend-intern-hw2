@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import ConnectedTodoDeleteAllButton from '../../connected/ConnectedTodoDeleteAllButton'
 import ConnectedTodoCheckAllButton from '../../connected/ConnectedTodoCheckAllButton'
-import {todoSelector} from '../../../features/selector/TodoSelector'
+import {todoSelector} from '../../../features/Todo/selector/TodoSelector'
 import {useSelector} from 'react-redux'
 
 const TodoButtons = () => {

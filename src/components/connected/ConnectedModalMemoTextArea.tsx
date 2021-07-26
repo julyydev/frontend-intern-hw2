@@ -1,6 +1,6 @@
 import {useDispatch} from 'react-redux'
 import React, {useCallback} from 'react'
-import {Todo, todoActions} from '../../features/ducks/TodoDucks'
+import {Todo, todoActions} from '../../features/Todo/ducks/TodoDucks'
 import ModalMemoTextArea from '../presentational/modal/ModalMemoTextArea'
 
 interface Props {

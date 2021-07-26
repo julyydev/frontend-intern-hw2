@@ -9,7 +9,7 @@ import Clock from './components/presentational/information/Clock'
 import Weather from './components/presentational/information/Weather'
 import TodoSearch from './components/presentational/search/TodoSearch'
 import {useSelector} from 'react-redux'
-import {todoSelector} from './features/selector/TodoSelector'
+import {todoSelector} from './features/Todo/selector/TodoSelector'
 
 const MainScreen = () => {
   const todoList = useSelector(todoSelector.todoList)

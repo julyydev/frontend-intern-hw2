@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import ConnectedSearchFilter from '../../connected/ConnectedSearchFilter'
 import {Grid} from 'semantic-ui-react'
 import {useSelector} from 'react-redux'
-import {searchSelector} from '../../../features/selector/SearchSelector'
+import {searchSelector} from '../../../features/Search/selector/SearchSelector'
 
 const TodoSearch = () => {
   const [input, setInput] = useState('')
